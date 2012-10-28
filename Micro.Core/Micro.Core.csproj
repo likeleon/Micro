@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Color.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="Math\MathUtils.cs" />
     <Compile Include="Math\Matrix3.cs" />
     <Compile Include="Math\Matrix4.cs" />

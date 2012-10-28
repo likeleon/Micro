@@ -67,6 +67,7 @@
     <Compile Include="Math\Vector4Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestHelpers.cs" />
+    <Compile Include="LogTest.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
