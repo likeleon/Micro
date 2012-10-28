@@ -43,6 +43,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -57,6 +58,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ColorTest.cs" />
+    <Compile Include="SlimDXMappingsTest.cs" />
     <Compile Include="Math\MathUtilsTest.cs" />
     <Compile Include="Math\Matrix3Test.cs" />
     <Compile Include="Math\Matrix4Test.cs" />
@@ -66,6 +69,8 @@
     <Compile Include="Math\Vector3Test.cs" />
     <Compile Include="Math\Vector4Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RectangleTest.cs" />
+    <Compile Include="SizeTest.cs" />
     <Compile Include="TestHelpers.cs" />
     <Compile Include="LogTest.cs" />
   </ItemGroup>

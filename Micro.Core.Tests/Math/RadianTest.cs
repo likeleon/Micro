@@ -7,7 +7,7 @@ namespace Micro.Core.Tests.Math
     public class RadianTest
     {
         [TestMethod()]
-        public void Radian_Constructor_Test()
+        public void Radian_Constructor()
         {
             var r = new Radian();
             Assert.AreEqual(0.0f, r.Value);
@@ -23,7 +23,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Radian_Comparision_Test()
+        public void Radian_Comparision()
         {
             Assert.IsTrue(new Radian(1.0f) < new Radian(2.0f));
             Assert.IsTrue(new Radian(1.0f) <= new Radian(1.0f));
@@ -36,7 +36,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Radian_Operators_Test()
+        public void Radian_Operators()
         {
             Assert.AreEqual(new Radian(1.0f),  +new Radian(1.0f));
             Assert.AreEqual(new Radian(3.0f),  new Radian(1.0f) + new Radian(2.0f));
@@ -55,7 +55,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Radian_Wrap_Test()
+        public void Radian_Wrap()
         {
             var radian = new Radian(MathUtils.PI);
             var wrapAngle = new Radian(MathUtils.PI);
@@ -69,13 +69,13 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Radian_ToString_Test()
+        public void Radian_ToString()
         {
             Assert.AreEqual("Radian(-1.2)", (new Radian(-1.2f)).ToString());
         }
 
         [TestMethod()]
-        public void Radian_AngleBetween_Test()
+        public void Radian_AngleBetween()
         {
             Assert.AreEqual(new Radian(MathUtils.PI / 2), Radian.AngleBetween(Vector3.UnitX, Vector3.UnitY));
         }

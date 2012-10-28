@@ -7,7 +7,7 @@ namespace Micro.Core.Tests.Math
     public class Vector4Test
     {
         [TestMethod()]
-        public void Vector4_ConstructorTest()
+        public void Vector4_Constructor()
         {
             Vector4 a = new Vector4();
             Assert.AreEqual(0.0f, a.x);
@@ -23,7 +23,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector4_ConstructFromVector3Test()
+        public void Vector4_ConstructFromVector3()
         {
             Vector3 v3 = new Vector3(1.0f, 2.0f, 3.0f);
             Vector4 v4 = new Vector4(v3, 0.8f);
@@ -32,7 +32,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector4_EqualityTest()
+        public void Vector4_Equality()
         {
             Vector4 a = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
             Vector4 b = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
@@ -43,7 +43,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector4_AdditionTest()
+        public void Vector4_Addition()
         {
             Vector4 a = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
             Vector4 b = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
@@ -57,7 +57,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector4_DotProductTest()
+        public void Vector4_DotProduct()
         {
             Vector4 a = new Vector4(1.0f, 2.0f, 3.0f, 4.0f);
             Vector4 b = new Vector4(5.0f, 6.0f, 7.0f, 8.0f);
@@ -79,14 +79,14 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector4_ToStringTest()
+        public void Vector4_ToString()
         {
             Vector4 v = new Vector4(1.0f, 2.2f, 3.33f, 4.444f);
             Assert.AreEqual("Vector4(1, 2.2, 3.33, 4.444)", v.ToString());
         }
 
         [TestMethod()]
-        public void Vector4_SpecialVectorsTest()
+        public void Vector4_SpecialVectors()
         {
             Vector4 zero = new Vector4(0.0f, 0.0f, 0.0f, 0.0f);
             Assert.AreEqual(zero, Vector4.Zero);

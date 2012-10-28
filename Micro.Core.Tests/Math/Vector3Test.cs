@@ -8,7 +8,7 @@ namespace Micro.Core.Tests.Math
     public class Vector3Test
     {
         [TestMethod()]
-        public void Vector3_ConstructorTest()
+        public void Vector3_Constructor()
         {
             Vector3 a = new Vector3();
             Assert.AreEqual(0.0f, a.x);
@@ -21,7 +21,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector3_EqualityTest()
+        public void Vector3_Equality()
         {
             Vector3 a = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 b = new Vector3(1.0f, 2.0f, 3.0f);
@@ -32,7 +32,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector3_UnaryTest()
+        public void Vector3_Unary()
         {
             Vector3 a = new Vector3(1.0f, 2.0f, 3.0f);
             Assert.AreEqual(-1.0f, (-a).x);
@@ -41,7 +41,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector3_AdditionTest()
+        public void Vector3_Addition()
         {
             Vector3 a = new Vector3(1.0f, 1.0f, 1.0f);
             Vector3 b = new Vector3(1.0f, 2.0f, 3.0f);
@@ -69,7 +69,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector3_SubtractionTest()
+        public void Vector3_Subtraction()
         {
             Vector3 a = new Vector3(1.0f, 1.0f, 1.0f);
             Vector3 b = new Vector3(1.0f, 2.0f, 3.0f);
@@ -97,7 +97,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector3_MultiplicationByScalarTest()
+        public void Vector3_MultiplicationByScalar()
         {
             Vector3 a = new Vector3(1.0f, 2.0f, 3.0f);
 
@@ -129,7 +129,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector3_DivisionTest()
+        public void Vector3_Division()
         {
             Vector3 a = new Vector3(1.0f, 2.0f, 3.0f);
 
@@ -155,7 +155,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector3_MagnitudeTest()
+        public void Vector3_Magnitude()
         {
             Vector3 a = new Vector3(3.0f, 4.0f, 5.0f);
 
@@ -169,7 +169,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector3_Normalize_Test()
+        public void Vector3_Normalize()
         {
             Vector3 a = new Vector3(3.0f, 4.0f, 5.0f);
             Assert.AreEqual(1.0f, a.Normalize().Length);
@@ -179,7 +179,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector3_DotProductTest()
+        public void Vector3_DotProduct()
         {
             Vector3 a = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 b = new Vector3(3.0f, 4.0f, 5.0f);
@@ -201,7 +201,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector3_CrossProductTest()
+        public void Vector3_CrossProduct()
         {
             Vector3 a = new Vector3(1.0f, 2.0f, 3.0f);
             Vector3 b = new Vector3(3.0f, 4.0f, 5.0f);
@@ -229,14 +229,14 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector3_ToStringTest()
+        public void Vector3_ToString()
         {
             Vector3 v = new Vector3(1.0f, 2.2f, 3.33f);
             Assert.AreEqual("Vector3(1, 2.2, 3.33)", v.ToString());
         }
 
         [TestMethod()]
-        public void Vector3_SpecialVectorsTest()
+        public void Vector3_SpecialVectors()
         {
             Vector3 zero = new Vector3(0.0f, 0.0f, 0.0f);
             Assert.AreEqual(zero, Vector3.Zero);
@@ -252,7 +252,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector3_IsZeroLength_Test()
+        public void Vector3_IsZeroLength()
         {
             Assert.IsTrue(Vector3.Zero.IsZeroLength);
             Assert.IsFalse(Vector3.UnitX.IsZeroLength);

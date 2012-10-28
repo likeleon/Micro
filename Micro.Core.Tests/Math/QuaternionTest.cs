@@ -8,7 +8,7 @@ namespace Micro.Core.Tests.Math
     public class QuaternionTest
     {
         [TestMethod()]
-        public void Quaternion_Constructor_Test()
+        public void Quaternion_Constructor()
         {
             var q = new Quaternion();
             Assert.AreEqual(Quaternion.Zero, q);
@@ -21,7 +21,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Quaternion_Equality_Test()
+        public void Quaternion_Equality()
         {
             var a = new Quaternion(1.0f, 2.0f, 3.0f, 4.0f);
             var b = new Quaternion(1.0f, 2.0f, 3.0f, 4.0f);
@@ -32,7 +32,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Quaternion_CreateFromAxisAngle_Test()
+        public void Quaternion_CreateFromAxisAngle()
         {
             var actual = Quaternion.CreateFromAxisAngle(Vector3.UnitX, new Radian(MathUtils.PI / 2.0f));
             var expected = SlimDX.Quaternion.RotationAxis(SlimDX.Vector3.UnitX, MathUtils.PI / 2.0f).ToQuaternion();
@@ -40,7 +40,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Quaternion_Negation_Test()
+        public void Quaternion_Negation()
         {
             var actual = -(new Quaternion(1.0f, 2.0f, 3.0f, 4.0f));
             var expected = new Quaternion(-1.0f, -2.0f, -3.0f, -4.0f);
@@ -48,7 +48,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Quaternion_Conjugate_Test()
+        public void Quaternion_Conjugate()
         {
             var actual = new Quaternion(1.0f, 2.0f, 3.0f, 4.0f).Conjugate();
             var expected = new Quaternion(1.0f, -2.0f, -3.0f, -4.0f);
@@ -59,7 +59,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Quaternion_Length_Test()
+        public void Quaternion_Length()
         {
             var q = new Quaternion(1.0f, 2.0f, 3.0f, 4.0f);
             var expectedLengthSquared = q.w * q.w + q.x * q.x + q.y * q.y + q.z * q.z;
@@ -70,7 +70,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Quaternion_Inverse_Test()
+        public void Quaternion_Inverse()
         {
             var q = new Quaternion(1.0f, 2.0f, 3.0f, 4.0f);
             var expected = q.Conjugate() * (1 / q.Length);
@@ -84,7 +84,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Quaternion_Multiply_Scalar_Test()
+        public void Quaternion_Multiply_Scalar()
         {
             var q = new Quaternion(1.0f, 2.0f, 3.0f, 4.0f);
             var scalar = 0.12f;
@@ -93,7 +93,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Quaternion_Multiply_Quaternion_Test()
+        public void Quaternion_Multiply_Quaternion()
         {
             var a = Quaternion.CreateFromAxisAngle(Vector3.UnitX, new Radian(MathUtils.PI / 4));
             var b = Quaternion.CreateFromAxisAngle(Vector3.UnitX, new Radian(MathUtils.PI / 4));
@@ -106,14 +106,14 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Quaternion_Multiply_Vector_Test()
+        public void Quaternion_Multiply_Vector()
         {
             var q = Quaternion.CreateFromAxisAngle(Vector3.UnitY, new Radian(MathUtils.PI / 2));
             TestHelpers.AreEqual(-Vector3.UnitZ, Vector3.UnitX * q);
         }
 
         [TestMethod()]
-        public void Quaternion_Subtract_Test()
+        public void Quaternion_Subtract()
         {
             var a = new Quaternion(1.0f, 2.0f, 3.0f, 4.0f);
             var b = new Quaternion(0.0f, -1.0f, -2.0f, -3.0f);
@@ -122,21 +122,21 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Quaternion_Normalize_Test()
+        public void Quaternion_Normalize()
         {
             var q = new Quaternion(1.0f, 2.0f, 3.0f, 4.0f);
             Assert.AreEqual(1.0f, q.Normalize().Length);
         }
 
         [TestMethod()]
-        public void Quaternion_PredefinedQuaternions_Test()
+        public void Quaternion_PredefinedQuaternions()
         {
             Assert.AreEqual(new Quaternion(1.0f, 0.0f, 0.0f, 0.0f), Quaternion.Identity);
             Assert.AreEqual(new Quaternion(0.0f, 0.0f, 0.0f, 0.0f), Quaternion.Zero);
         }
 
         [TestMethod()]
-        public void Quaternion_CreateFromRotationMatrix_Test()
+        public void Quaternion_CreateFromRotationMatrix()
         {
             var matrix = Matrix3.CreateFromYawPitchRoll(new Radian(MathUtils.PI / 2.0f), new Radian(0.0f), new Radian(0.0f));
             var actual = Quaternion.CreateFromRotationMatrix(matrix);
@@ -145,7 +145,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Quaternion_ToRotationMatrix_Test()
+        public void Quaternion_ToRotationMatrix()
         {
             var q = Quaternion.CreateFromAxisAngle(Vector3.UnitY, new Radian(MathUtils.PI / 2.0f));
             var actual = q.ToRotationMatrix();
@@ -154,7 +154,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Quaternion_CreateFromAxes_Test()
+        public void Quaternion_CreateFromAxes()
         {
             var actual = Quaternion.CreateFromAxes(-Vector3.UnitZ, Vector3.UnitY, Vector3.UnitX);
             var expected = Quaternion.CreateFromAxisAngle(Vector3.UnitY, new Radian(MathUtils.PI / 2));
@@ -162,7 +162,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Quaternion_ToAxes_Test()
+        public void Quaternion_ToAxes()
         {
             var q = Quaternion.CreateFromAxisAngle(Vector3.UnitY, new Radian(MathUtils.PI / 2));
             
@@ -183,7 +183,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Quaternion_ToString_Test()
+        public void Quaternion_ToString()
         {
             var q = new Quaternion(0.1f, 0.22f, 0.333f, 0.4444f);
             Assert.AreEqual("Quaternion(0.1, 0.22, 0.333, 0.4444)", q.ToString());

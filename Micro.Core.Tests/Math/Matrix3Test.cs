@@ -8,7 +8,7 @@ namespace Micro.Core.Tests.Math
     public class Matrix3Test
     {
         [TestMethod()]
-        public void Matrix3_Constructor_Test()
+        public void Matrix3_Constructor()
         {
             var m = new Matrix3();
             Assert.AreEqual(Matrix3.Zero, m);
@@ -26,7 +26,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix3_CreateFromVectors_Test()
+        public void Matrix3_CreateFromVectors()
         {
             var v1 = new Vector3(0, 1, 2);
             var v2 = new Vector3(3, 4, 5);
@@ -39,7 +39,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix3_Equality_Test()
+        public void Matrix3_Equality()
         {
             var actual = new Matrix3(0, 3, 6,
                                      1, 4, 7,
@@ -53,7 +53,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix3_Multiplication_Test()
+        public void Matrix3_Multiplication()
         {
             var m1 = new Matrix3(0, 3, 6,
                                  1, 4, 7,
@@ -77,7 +77,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix3_SpecialMatrices_Test()
+        public void Matrix3_SpecialMatrices()
         {
             // Zero matrix
             for (int row = 0; row < 3; ++row)
@@ -102,7 +102,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix3_CreateFromYawPitchRoll_Test()
+        public void Matrix3_CreateFromYawPitchRoll()
         {
             Radian yaw = new Radian(MathUtils.PI / 6), 
                    pitch = new Radian(MathUtils.PI / 5),
@@ -125,7 +125,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix3_Subtract_Test()
+        public void Matrix3_Subtract()
         {
             var m = new Matrix3(0, 3, 6,
                                 1, 4, 7,
@@ -135,7 +135,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix3_ToStringTest()
+        public void Matrix3_ToString()
         {
             Assert.AreEqual("Matrix3( row0{1 0 0 } row1{0 1 0 } row2{0 0 1 })",
                 Matrix3.Identity.ToString());

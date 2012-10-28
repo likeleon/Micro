@@ -7,7 +7,7 @@ namespace Micro.Core.Tests.Math
     public class Vector2Test
     {
         [TestMethod()]
-        public void Vector2_ConstructTest()
+        public void Vector2_Construct()
         {
             Vector2 a = new Vector2();
             Assert.AreEqual(0.0f, a.x);
@@ -19,7 +19,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector2_EquialityTest()
+        public void Vector2_Equiality()
         {
             Vector2 a = new Vector2(1.0f, 1.0f);
             Vector2 b = new Vector2(1.0f, 1.0f);
@@ -30,7 +30,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector2_UnaryTest()
+        public void Vector2_Unary()
         {
             Vector2 a = new Vector2(1.0f, 2.0f);
             Assert.AreEqual(-1.0f, (-a).x);
@@ -38,7 +38,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector2_AdditionTest()
+        public void Vector2_Addition()
         {
             Vector2 a = new Vector2(1.0f, 1.0f);
             Vector2 b = new Vector2(1.0f, 2.0f);
@@ -63,7 +63,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector2_SubtractionTest()
+        public void Vector2_Subtraction()
         {
             Vector2 a = new Vector2(1.0f, 1.0f);
             Vector2 b = new Vector2(1.0f, 2.0f);
@@ -88,7 +88,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector2_MultiplicationByScalarTest()
+        public void Vector2_MultiplicationByScalar()
         {
             Vector2 a = new Vector2(1.0f, 2.0f);
 
@@ -116,7 +116,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector2_DivisionTest()
+        public void Vector2_Division()
         {
             Vector2 a = new Vector2(1.0f, 2.0f);
 
@@ -139,7 +139,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector2_MagnitudeTest()
+        public void Vector2_Magnitude()
         {
             Vector2 a = new Vector2(3.0f, 4.0f);
             Assert.AreEqual(5.0f, a.Length);
@@ -151,7 +151,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector2_NormalizationTest()
+        public void Vector2_Normalization()
         {
             Vector2 a = new Vector2(3.0f, 4.0f);
             a.Normalize();
@@ -163,7 +163,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector2_DotProductTest()
+        public void Vector2_DotProduct()
         {
             Vector2 a = new Vector2(1.0f, 2.0f);
             Vector2 b = new Vector2(3.0f, 4.0f);
@@ -185,14 +185,14 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector2_ToStringTest()
+        public void Vector2_ToString()
         {
             Vector2 v = new Vector2(1.0f, 2.2f);
             Assert.AreEqual("Vector2(1, 2.2)", v.ToString());
         }
 
         [TestMethod()]
-        public void Vector2_SpecialVectors_Test()
+        public void Vector2_SpecialVectors()
         {
             Assert.AreEqual(new Vector2(0.0f, 0.0f), Vector2.Zero);
             Assert.AreEqual(new Vector2(0.0f, 1.0f), Vector2.UnitY);
@@ -200,7 +200,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector2_CrossProduct_Test()
+        public void Vector2_CrossProduct()
         {
             Vector2 a = new Vector2(1.0f, 2.0f);
             Vector2 b = new Vector2(3.0f, 4.0f);
@@ -209,7 +209,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Vector2_Parse_Test()
+        public void Vector2_Parse()
         {
             var expected = new Vector2(1.0f, 2.2f);
             var actual = Vector2.Parse(expected.ToString());

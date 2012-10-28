@@ -7,7 +7,7 @@ namespace Micro.Core.Tests.Math
     public class Matrix4Test
     {
         [TestMethod()]
-        public void Matrix4_Constructor_Test()
+        public void Matrix4_Constructor()
         {
             Matrix4 m = new Matrix4();
             Assert.AreEqual(Matrix4.Zero, m);
@@ -26,7 +26,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix4_CreateFromVectors_Test()
+        public void Matrix4_CreateFromVectors()
         {
             Vector4 v1 = new Vector4(0, 1, 2, 3);
             Vector4 v2 = new Vector4(4, 5, 6, 7);
@@ -42,7 +42,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix4_Equality_Test()
+        public void Matrix4_Equality()
         {
             Matrix4 a = new Matrix4(0, 4, 8, 12,
                                     1, 5, 9, 13,
@@ -62,7 +62,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix4_Multiplication_Test()
+        public void Matrix4_Multiplication()
         {
             Matrix4 m1 = new Matrix4(0, 4, 8, 12,
                      1, 5, 9, 13,
@@ -88,7 +88,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix4_SpecialMatrices_Test()
+        public void Matrix4_SpecialMatrices()
         {
             // Zero matrix
             for (int row = 0; row < 4; ++row)
@@ -113,7 +113,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix4_InvertTest()
+        public void Matrix4_Invert()
         {
             Matrix4 a = new Matrix4(1, 2, 2, 2,
                     2, 2, 1, 1,
@@ -153,7 +153,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix4_TransposeTest()
+        public void Matrix4_Transpose()
         {
             Matrix4 a = new Matrix4(0, 1, 2, 3,
                     4, 5, 6, 7,
@@ -181,14 +181,14 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix4_ToStringTest()
+        public void Matrix4_ToString()
         {
             Assert.AreEqual("Matrix4( row0{1 0 0 0 } row1{0 1 0 0 } row2{0 0 1 0 } row3{0 0 0 1 })",
                 Matrix4.Identity.ToString());
         }
 
         [TestMethod()]
-        public void Matrix4_Multiply_By_Vector3_Test()
+        public void Matrix4_Multiply_By_Vector3()
         {
             var m = new Matrix4(0, 1, 2, 3,
                                 4, 5, 6, 7,
@@ -205,7 +205,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix4_Translation_Test()
+        public void Matrix4_Translation()
         {
             var transDelta = new Vector3(1.0f, 2.0f, 3.0f);
             var m1 = Matrix4.CreateTranslation(transDelta);
@@ -220,7 +220,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix4_Quaternion_Test()
+        public void Matrix4_Quaternion()
         {
             var rotate = Quaternion.CreateFromAxisAngle(Vector3.UnitY, new Radian(MathUtils.PI / 2.0f));
             var m = Matrix4.CreateFromQuaternion(rotate);
@@ -229,7 +229,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix4_Scale_Test()
+        public void Matrix4_Scale()
         {
             var scale = new Vector3(1.0f, 2.0f, 3.0f);
             var m = Matrix4.CreateScale(scale);
@@ -245,7 +245,7 @@ namespace Micro.Core.Tests.Math
         }
 
         [TestMethod()]
-        public void Matrix4_GetSetMatrix3_Test()
+        public void Matrix4_GetSetMatrix3()
         {
             var m3x3 = new Matrix3(0, 3, 6,
                                    1, 4, 7,

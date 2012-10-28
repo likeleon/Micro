@@ -8,7 +8,7 @@ namespace Micro.Core.Tests
     public class LogTest
     {
         [TestMethod]
-        public void Log_LoggedEventTest()
+        public void Log_LoggedEvent()
         {
             string actualMessage = null;
             Exception actualException = null;
