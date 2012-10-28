@@ -1,7 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Core", "Micro.Core\Micro.Core.csproj", "{4682DC83-C427-4BC4-BCC7-726B833E018B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Core.Tests", "Micro.Core.Tests\Micro.Core.Tests.csproj", "{268EA67D-6077-4909-A01F-5E8E67034041}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4682DC83-C427-4BC4-BCC7-726B833E018B}.Debug|x86.ActiveCfg = Debug|x86
+		{4682DC83-C427-4BC4-BCC7-726B833E018B}.Debug|x86.Build.0 = Debug|x86
+		{4682DC83-C427-4BC4-BCC7-726B833E018B}.Release|x86.ActiveCfg = Release|x86
+		{4682DC83-C427-4BC4-BCC7-726B833E018B}.Release|x86.Build.0 = Release|x86
+		{268EA67D-6077-4909-A01F-5E8E67034041}.Debug|x86.ActiveCfg = Debug|x86
+		{268EA67D-6077-4909-A01F-5E8E67034041}.Debug|x86.Build.0 = Debug|x86
+		{268EA67D-6077-4909-A01F-5E8E67034041}.Release|x86.ActiveCfg = Release|x86
+		{268EA67D-6077-4909-A01F-5E8E67034041}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
