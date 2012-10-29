@@ -116,7 +116,7 @@ namespace Micro.Core
             };
         }
 
-        public static Color ToIreliaColor(this SlimDX.Color4 color)
+        public static Color ToMicroColor(this SlimDX.Color4 color)
         {
             return new Color()
             {

@@ -74,13 +74,13 @@ namespace Micro.Core.Tests.Math
         {
             var q = new Quaternion(1.0f, 2.0f, 3.0f, 4.0f);
             var expected = q.Conjugate() * (1 / q.Length);
-            Assert.AreEqual(expected, q.Inverse());
+            TestHelpers.QuaternionAreNearEqual(expected, q.Inverse());
 
-            Assert.AreEqual(Quaternion.Zero, Quaternion.Zero.Inverse());
+            TestHelpers.QuaternionAreNearEqual(Quaternion.Zero, Quaternion.Zero.Inverse());
 
             var q2 = SlimDX.Quaternion.Invert(new SlimDX.Quaternion(2.0f, 3.0f, 4.0f, 1.0f));
             q2.Normalize();
-            Assert.AreEqual(q2.ToQuaternion(), q.Inverse());
+            TestHelpers.QuaternionAreNearEqual(q2.ToQuaternion(), q.Inverse());
         }
 
         [TestMethod()]

@@ -61,11 +61,11 @@ namespace Micro.Core.Tests
         }
 
         [TestMethod()]
-        public void SlimDxMappings_FromD3DColor4_ToIreliaColor()
+        public void SlimDxMappings_FromD3DColor4_ToMicroColor()
         {
             var actual = new SlimDX.Color4(0.1f, 0.22f, 0.333f, 0.4444f);
             var expected = new Color(actual.Alpha, actual.Red, actual.Green, actual.Blue);
-            Assert.AreEqual(expected, actual.ToIreliaColor());
+            Assert.AreEqual(expected, actual.ToMicroColor());
         }
     }
 }

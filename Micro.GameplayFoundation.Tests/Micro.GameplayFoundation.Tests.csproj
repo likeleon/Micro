@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{268EA67D-6077-4909-A01F-5E8E67034041}</ProjectGuid>
+    <ProjectGuid>{DC912B8E-7319-415F-9B10-B772EE69A36E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Micro.Core.Tests</RootNamespace>
-    <AssemblyName>Micro.Core.Tests</AssemblyName>
+    <RootNamespace>Micro.GameplayFoundation.Tests</RootNamespace>
+    <AssemblyName>Micro.GameplayFoundation.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -38,12 +38,10 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Drawing" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -58,28 +56,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ColorTest.cs" />
-    <Compile Include="SlimDXMappingsTest.cs" />
-    <Compile Include="Math\MathUtilsTest.cs" />
-    <Compile Include="Math\Matrix3Test.cs" />
-    <Compile Include="Math\Matrix4Test.cs" />
-    <Compile Include="Math\QuaternionTest.cs" />
-    <Compile Include="Math\RadianTest.cs" />
-    <Compile Include="Math\Vector2Test.cs" />
-    <Compile Include="Math\Vector3Test.cs" />
-    <Compile Include="Math\Vector4Test.cs" />
+    <Compile Include="GameTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RectangleTest.cs" />
-    <Compile Include="SizeTest.cs" />
-    <Compile Include="TestHelpers.cs" />
-    <Compile Include="LogTest.cs" />
-    <Compile Include="TimerTest.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Micro.Core\Micro.Core.csproj">
-      <Project>{4682dc83-c427-4bc4-bcc7-726b833e018b}</Project>
-      <Name>Micro.Core</Name>
+    <ProjectReference Include="..\Micro.GameplayFoundation\Micro.GameplayFoundation.csproj">
+      <Project>{7f8aabbf-2beb-415e-b62b-82af7546a821}</Project>
+      <Name>Micro.GameplayFoundation</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

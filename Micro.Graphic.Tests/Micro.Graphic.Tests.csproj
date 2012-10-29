@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{268EA67D-6077-4909-A01F-5E8E67034041}</ProjectGuid>
+    <ProjectGuid>{3CC7210D-C5A9-441F-A287-2C050EA23A85}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Micro.Core.Tests</RootNamespace>
-    <AssemblyName>Micro.Core.Tests</AssemblyName>
+    <RootNamespace>Micro.Graphic.Tests</RootNamespace>
+    <AssemblyName>Micro.Graphic.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -43,7 +43,6 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Drawing" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -58,28 +57,19 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ColorTest.cs" />
-    <Compile Include="SlimDXMappingsTest.cs" />
-    <Compile Include="Math\MathUtilsTest.cs" />
-    <Compile Include="Math\Matrix3Test.cs" />
-    <Compile Include="Math\Matrix4Test.cs" />
-    <Compile Include="Math\QuaternionTest.cs" />
-    <Compile Include="Math\RadianTest.cs" />
-    <Compile Include="Math\Vector2Test.cs" />
-    <Compile Include="Math\Vector3Test.cs" />
-    <Compile Include="Math\Vector4Test.cs" />
+    <Compile Include="DeviceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RectangleTest.cs" />
-    <Compile Include="SizeTest.cs" />
-    <Compile Include="TestHelpers.cs" />
-    <Compile Include="LogTest.cs" />
-    <Compile Include="TimerTest.cs" />
+    <Compile Include="RenderTargetTest.cs" />
+    <Compile Include="WindowTest.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Micro.Core\Micro.Core.csproj">
       <Project>{4682dc83-c427-4bc4-bcc7-726b833e018b}</Project>
       <Name>Micro.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Micro.Graphic\Micro.Graphic.csproj">
+      <Project>{13f6a8b7-35a9-406a-8462-8245089d3cc4}</Project>
+      <Name>Micro.Graphic</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
