@@ -52,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderer.cs" />
     <Compile Include="RenderTarget.cs" />
+    <Compile Include="SceneGraph.cs" />
     <Compile Include="Window.cs" />
   </ItemGroup>
   <ItemGroup>

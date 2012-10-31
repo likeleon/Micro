@@ -4,11 +4,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Micro.Graphic.Tests
 {
-    internal class TestHelpers
+    public class TestHelpers
     {
-        internal static Device device;
+        private static Device device;
 
-        internal static Device GetDevice()
+        public static Device GetDevice()
         {
             if (device == null)
             {
@@ -18,7 +18,7 @@ namespace Micro.Graphic.Tests
             return device;
         }
 
-        internal static bool CatchException(Type targetException, Action action)
+        public static bool CatchException(Type targetException, Action action)
         {
             try
             {
@@ -34,20 +34,22 @@ namespace Micro.Graphic.Tests
         }
 
         // IRenderable mock
-        internal class RenderableMock : IRenderable
+        public class RenderableMock : IRenderable
         {
             public event EventHandler RenderCalled = delegate { };
 
             bool IRenderable.Render(Camera camera, Light light)
             {
                 RenderCalled(this, EventArgs.Empty);
+                ++NumRenderCalled;
                 return true;
             }
 
             public Matrix4 WorldMatrix { get { return Matrix4.Identity; } }
+            public int NumRenderCalled { get; private set; }
         };
 
-        internal static RenderableMock CreateRenderableMock(Device device)
+        public static RenderableMock CreateRenderableMock(Device device)
         {
             return new RenderableMock();
         }

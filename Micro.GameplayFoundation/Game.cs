@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Threading;
 using System.Windows.Forms;
+using Micro.Graphic;
 
 namespace Micro.GameplayFoundation
 {
@@ -37,10 +38,15 @@ namespace Micro.GameplayFoundation
         }
 
         public int TotalGameTime { get; private set; }
+        public SceneGraph SceneGraph { get; private set; }
+        public Camera Camera { get; private set; }
+        public Light Light { get; private set; }
         #endregion
 
         #region Fields
         protected readonly Form form;
+        private readonly Device device;
+        private readonly Renderer renderer;
         private int targetElapsedTime = 1000 / 60;
         private readonly Micro.Core.Timer timer = new Micro.Core.Timer();
         private int lastUpdateTime;
@@ -59,6 +65,12 @@ namespace Micro.GameplayFoundation
                 Text = title,
                 ClientSize = new System.Drawing.Size(Width, Height)
             };
+
+            this.device = new Device(this.form.Handle, Width, Height);
+            this.renderer = new Renderer(device);
+            SceneGraph = new SceneGraph();
+            Camera = new Camera();
+            Light = new Light();
         }
         #endregion
 
@@ -104,6 +116,7 @@ namespace Micro.GameplayFoundation
         //  elapsed: Time passed since the last call to draw
         protected virtual void Draw(float elapsed)
         {
+            this.renderer.Render(this.renderer.PrimaryRenderTarget, SceneGraph.Renderables, Camera, Light, true);
         }
 
         // Raises an Exiting event. Override this method to add code to handle when the game is exiting
