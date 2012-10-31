@@ -8,14 +8,14 @@ namespace Micro.Core.Tests
     public class TimerTest
     {
         [TestMethod()]
-        public void Timer_Constructor_Test()
+        public void Timer_Constructor()
         {
             var timer = new Timer();
             Assert.AreEqual(0, timer.Elapsed);
         }
 
         [TestMethod()]
-        public void Timer_Stop_Test()
+        public void Timer_Stop()
         {
             var timer = new Timer();
             timer.Start();
