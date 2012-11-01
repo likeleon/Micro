@@ -68,6 +68,7 @@
     <Compile Include="RendererTest.cs" />
     <Compile Include="TestHelpers.cs" />
     <Compile Include="SceneGraphTest.cs" />
+    <Compile Include="TextureTest.cs" />
     <Compile Include="WindowTest.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,5 @@
 ﻿using System;
 using Micro.Core.Math;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Micro.Graphic.Tests
 {
@@ -8,14 +7,17 @@ namespace Micro.Graphic.Tests
     {
         private static Device device;
 
-        public static Device GetDevice()
+        public static Device Device
         {
-            if (device == null)
+            get
             {
-                Window window = new Window("TestHelpers.GetDevice", 640, 480);
-                device = new Device(window.Handle, window.Width, window.Height);
+                if (device == null)
+                {
+                    Window window = new Window("TestHelpers.GetDevice", 640, 480);
+                    device = new Device(window.Handle, window.Width, window.Height);
+                }
+                return device;
             }
-            return device;
         }
 
         public static bool CatchException(Type targetException, Action action)

@@ -53,6 +53,7 @@
     <Compile Include="Renderer.cs" />
     <Compile Include="RenderTarget.cs" />
     <Compile Include="SceneGraph.cs" />
+    <Compile Include="Texture.cs" />
     <Compile Include="Window.cs" />
   </ItemGroup>
   <ItemGroup>

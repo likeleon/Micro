@@ -7,18 +7,10 @@ namespace Micro.Graphic.Tests
     [TestClass()]
     public class RendererTest
     {
-        private Device Device { get; set; }
-
-        [TestInitialize()]
-        public void SetUp()
-        {
-            Device = TestHelpers.GetDevice();
-        }
-
         [TestMethod()]
         public void Renderer_Constructor()
         {
-            var rs = new Renderer(Device);
+            var rs = new Renderer(TestHelpers.Device);
             Assert.IsNotNull(rs.PrimaryRenderTarget);
         }
 
@@ -31,9 +23,9 @@ namespace Micro.Graphic.Tests
         [TestMethod()]
         public void Renderer_Render()
         {
-            var rs = new Renderer(Device);
+            var rs = new Renderer(TestHelpers.Device);
 
-            var renderable = TestHelpers.CreateRenderableMock(Device);
+            var renderable = TestHelpers.CreateRenderableMock(TestHelpers.Device);
             int numRenderCalled = 0;
             renderable.RenderCalled += ((o, e) => ++numRenderCalled);
             var renderables = new List<IRenderable>() { renderable };
@@ -46,7 +38,7 @@ namespace Micro.Graphic.Tests
         [TestMethod()]
         public void Renderer_RenderFail()
         {
-            var rs = new Renderer(Device);
+            var rs = new Renderer(TestHelpers.Device);
 
             Assert.IsTrue(
                 TestHelpers.CatchException(typeof(ArgumentNullException),
