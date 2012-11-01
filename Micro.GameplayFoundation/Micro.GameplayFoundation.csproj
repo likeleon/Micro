@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="AssetManager.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="IAsset.cs" />
+    <Compile Include="IAssetFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

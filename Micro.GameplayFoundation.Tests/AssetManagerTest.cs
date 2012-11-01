@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using System;
 
 namespace Micro.GameplayFoundation.Tests
 {
@@ -37,11 +38,40 @@ namespace Micro.GameplayFoundation.Tests
             Assert.IsNull(assetManager.GetFullPath("InvalidGroupName", TestHelpers.TestAsset));
         }
 
-        private class AssetFactoryMock : AssetManager.AssetFactoryBase
+        private class AssetMock : AssetBase
         {
-            public AssetFactoryMock(string name, string assetType, params string[] fileExtensions)
+            public AssetMock(string fullPath)
+                : base(fullPath)
+            { 
+            }
+        }
+
+        private class AssetMock2 : AssetBase
+        {
+            public AssetMock2(string fullPath)
+                : base(fullPath)
+            { 
+            }
+        }
+
+        private class AssetMock3 : AssetBase
+        {
+            public AssetMock3(string fullPath)
+                : base(fullPath)
+            { 
+            }
+        }
+
+        private class AssetFactoryMock : AssetFactoryBase
+        {
+            public AssetFactoryMock(string name, Type assetType, params string[] fileExtensions)
                 : base(name, assetType, fileExtensions)
             {
+            }
+
+            public override IAsset LoadAsset(string fullPath)
+            {
+                return (IAsset)Activator.CreateInstance(AssetType, fullPath);
             }
         }
 
@@ -49,7 +79,7 @@ namespace Micro.GameplayFoundation.Tests
         public void AssetManager_AssetFactory()
         {
             var assetManager = new AssetManager();
-            var factory1 = new AssetFactoryMock("FactoryName", "Factory1", ".test", ".test2");
+            var factory1 = new AssetFactoryMock("FactoryName", typeof(AssetMock), ".test", ".test2");
             
             Assert.IsTrue(assetManager.RegisterAssetFactory(factory1));
             Assert.IsFalse(assetManager.RegisterAssetFactory(factory1), "중복 등록 불가");
@@ -58,14 +88,34 @@ namespace Micro.GameplayFoundation.Tests
             var factory2 = new AssetFactoryMock("FactoryName", factory1.AssetType, ".test3");
             Assert.IsFalse(assetManager.RegisterAssetFactory(factory2), "같은 이름의 AssetType으로 등록 불가");
 
-            var factory3 = new AssetFactoryMock("Factoryname", "Factory3", factory1.FileExtensions[0].ToUpper(), ".test4");
+            var factory3 = new AssetFactoryMock("Factoryname", typeof(AssetMock2), factory1.FileExtensions[0].ToUpper(), ".test4");
             Assert.IsFalse(assetManager.RegisterAssetFactory(factory3), "같은 확장자가 발견되면 등록 불가, 대소문자 구별 없음");
 
-            var factory4 = new AssetFactoryMock("FactoryName", "Factory4");
+            var factory4 = new AssetFactoryMock("FactoryName", typeof(AssetMock3));
             Assert.IsFalse(assetManager.RegisterAssetFactory(factory4), "null이나 빈 확장자 리스트로는 등록 불가");
 
             Assert.IsTrue(assetManager.UnRegisterAssetFactory(factory1));
             Assert.IsFalse(assetManager.UnRegisterAssetFactory(factory1));
+        }
+
+        [TestMethod()]
+        public void AssetManager_LoadAsset()
+        {
+            var assetManager = new AssetManager();
+            assetManager.AddGroup("TestGroup", TestHelpers.TestAssetsPath);
+            var factory = new AssetFactoryMock("Factory", typeof(AssetMock), Path.GetExtension(TestHelpers.TestAsset));
+            assetManager.RegisterAssetFactory(factory);
+
+            var asset = assetManager.LoadAsset("TestGroup", TestHelpers.TestAsset);
+            Assert.IsNotNull(asset);
+            Assert.AreEqual(factory.AssetType, asset.GetType());
+
+            Assert.AreEqual(asset, assetManager.LoadAsset("TestGroup", TestHelpers.TestAsset.ToUpper()), "동일 인스턴스를 반환, 대소문자 구분도 없다");
+            Assert.AreEqual(asset, assetManager.LoadAsset("TestGroup", asset.FullPath), "절대 경로도 유효하다면 OK");
+
+            Assert.IsNull(assetManager.LoadAsset("InvalidGroupName", TestHelpers.TestAsset), "잘못된 그룹 이름");
+            Assert.IsNull(assetManager.LoadAsset("TestGroup", Path.ChangeExtension(TestHelpers.TestAsset, ".x")), "등록되지 않은 확장자");
+            Assert.IsNull(assetManager.LoadAsset("TestGroup", "NonExistingAsset.file"), "존재하지 않는 에셋");
         }
     }
 }

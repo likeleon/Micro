@@ -60,6 +60,8 @@
     <Compile Include="GameTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestHelpers.cs" />
+    <Compile Include="IAssetTest.cs" />
+    <Compile Include="IAssetFactoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Micro.Core\Micro.Core.csproj">

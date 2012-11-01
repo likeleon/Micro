@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Micro.Core;
 using System.Linq;
+using Micro.Core;
 
 namespace Micro.GameplayFoundation.Tests
 {
@@ -28,43 +28,15 @@ namespace Micro.GameplayFoundation.Tests
         }
         #endregion
 
-        #region IAssetFactory interface
-        public interface IAssetFactory
-        {
-            string Name { get; }
-            string AssetType { get; }
-            string[] FileExtensions { get; }
-        }
-        #endregion
-
-        #region AssetFactoryBase
-        public abstract class AssetFactoryBase : IAssetFactory
-        {
-            public string Name { get; private set; }
-            public string AssetType { get; private set; }
-            public string[] FileExtensions { get; private set; }
-
-            public AssetFactoryBase(string name, string assetType, params string[] fileExtensions)
-            {
-                Name = name;
-                AssetType = assetType;
-                FileExtensions = fileExtensions;
-            }
-
-            public override string ToString()
-            {
-                return string.Format("{0}: ({1}) ({2})", Name, AssetType, string.Join(", ", FileExtensions));
-            }
-        }
-        #endregion
-
         public Dictionary<string, Group> Groups { get; private set; }
         public List<IAssetFactory> AssetFactories { get; private set; }
+        private readonly Dictionary<string, IAsset> assets;
 
         public AssetManager()
         {
-            Groups = new Dictionary<string, Group>();
+            Groups = new Dictionary<string, Group>(StringComparer.CurrentCultureIgnoreCase);
             AssetFactories = new List<IAssetFactory>();
+            assets = new Dictionary<string, IAsset>(StringComparer.CurrentCultureIgnoreCase);
         }
 
         public bool AddGroup(string name, string rootPath)
@@ -89,15 +61,15 @@ namespace Micro.GameplayFoundation.Tests
             return Groups.Remove(name);
         }
 
-        public string GetFullPath(string groupName, string assetName)
+        public string GetFullPath(string groupName, string assetPath)
         {
             if (!Groups.ContainsKey(groupName))
             {
-                Log.WarnFormat("Failed to get full path for asset {0}, asset group named {1} not exists", assetName, groupName);
+                Log.WarnFormat("Failed to get full path for asset {0}, asset group named {1} not exists", assetPath, groupName);
                 return null;
             }
 
-            return Path.Combine(Groups[groupName].RootPath, assetName);
+            return Path.Combine(Groups[groupName].RootPath, assetPath);
         }
 
         public bool RegisterAssetFactory(IAssetFactory factory)
@@ -136,6 +108,36 @@ namespace Micro.GameplayFoundation.Tests
                 return false;
             }
             return AssetFactories.Remove(factory);
+        }
+
+        public IAsset LoadAsset(string groupName, string assetPath)
+        {
+            string fullPath = GetFullPath(groupName, assetPath);
+            if (string.IsNullOrWhiteSpace(fullPath))
+            {
+                Log.WarnFormat("LoadAsset with group name {0} and asset {1} failed, empty full path returned", groupName, assetPath);
+                return null;
+            }
+
+            if (this.assets.ContainsKey(fullPath))
+                return this.assets[fullPath];
+
+            string fileExtension = Path.GetExtension(fullPath);
+            var factory = AssetFactories.Find(f => f.FileExtensions.Contains(fileExtension, StringComparer.CurrentCultureIgnoreCase));
+            if (factory == null)
+            {
+                Log.WarnFormat("LoadAsset with group name {0} and asset {1} failed, unknown file extension {2}", groupName, assetPath, fileExtension);
+                return null;
+            }
+
+            if (!File.Exists(fullPath))
+            {
+                Log.WarnFormat("LoadAsset with group name {0} and asset {1} failed, file {2} not exists", groupName, assetPath, fullPath);
+                return null;
+            }
+
+            this.assets[fullPath] = factory.LoadAsset(fullPath);
+            return this.assets[fullPath];
         }
     }
 }
