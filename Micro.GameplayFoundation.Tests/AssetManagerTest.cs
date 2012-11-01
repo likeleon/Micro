@@ -62,10 +62,10 @@ namespace Micro.GameplayFoundation.Tests
             }
         }
 
-        private class AssetFactoryMock : AssetFactoryBase
+        private class AssetFactoryMock<T> : AssetFactoryBase<T> where T : IAsset 
         {
-            public AssetFactoryMock(string name, Type assetType, params string[] fileExtensions)
-                : base(name, assetType, fileExtensions)
+            public AssetFactoryMock(string name, params string[] fileExtensions)
+                : base(name, fileExtensions)
             {
             }
 
@@ -79,19 +79,19 @@ namespace Micro.GameplayFoundation.Tests
         public void AssetManager_AssetFactory()
         {
             var assetManager = new AssetManager();
-            var factory1 = new AssetFactoryMock("FactoryName", typeof(AssetMock), ".test", ".test2");
+            var factory1 = new AssetFactoryMock<AssetMock>("FactoryName", ".test", ".test2");
             
             Assert.IsTrue(assetManager.RegisterAssetFactory(factory1));
             Assert.IsFalse(assetManager.RegisterAssetFactory(factory1), "중복 등록 불가");
             Assert.IsTrue(assetManager.AssetFactories.Contains(factory1));
 
-            var factory2 = new AssetFactoryMock("FactoryName", factory1.AssetType, ".test3");
-            Assert.IsFalse(assetManager.RegisterAssetFactory(factory2), "같은 이름의 AssetType으로 등록 불가");
+            var factory2 = new AssetFactoryMock<AssetMock>("FactoryName", ".test3");
+            Assert.IsFalse(assetManager.RegisterAssetFactory(factory2), "같은 에셋 타입으로 등록 불가");
 
-            var factory3 = new AssetFactoryMock("Factoryname", typeof(AssetMock2), factory1.FileExtensions[0].ToUpper(), ".test4");
+            var factory3 = new AssetFactoryMock<AssetMock2>("Factoryname", factory1.FileExtensions[0].ToUpper(), ".test4");
             Assert.IsFalse(assetManager.RegisterAssetFactory(factory3), "같은 확장자가 발견되면 등록 불가, 대소문자 구별 없음");
 
-            var factory4 = new AssetFactoryMock("FactoryName", typeof(AssetMock3));
+            var factory4 = new AssetFactoryMock<AssetMock3>("FactoryName");
             Assert.IsFalse(assetManager.RegisterAssetFactory(factory4), "null이나 빈 확장자 리스트로는 등록 불가");
 
             Assert.IsTrue(assetManager.UnRegisterAssetFactory(factory1));
@@ -103,7 +103,7 @@ namespace Micro.GameplayFoundation.Tests
         {
             var assetManager = new AssetManager();
             assetManager.AddGroup("TestGroup", TestHelpers.TestAssetsPath);
-            var factory = new AssetFactoryMock("Factory", typeof(AssetMock), Path.GetExtension(TestHelpers.TestAsset));
+            var factory = new AssetFactoryMock<AssetMock>("Factory", Path.GetExtension(TestHelpers.TestAsset));
             assetManager.RegisterAssetFactory(factory);
 
             var asset = assetManager.LoadAsset("TestGroup", TestHelpers.TestAsset);

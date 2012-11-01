@@ -6,10 +6,18 @@ namespace Micro.GameplayFoundation.Tests
     [TestClass]
     public class IAssetFactoryTest
     {
-        private class AssetFactoryMock : AssetFactoryBase
+        private class AssetMock : AssetBase
         {
-            public AssetFactoryMock(string name, Type assetType, params string[] fileExtensions)
-                : base(name, assetType, fileExtensions)
+            public AssetMock(string fullPath)
+                : base(fullPath)
+            {
+            }
+        }
+
+        private class AssetFactoryMock : AssetFactoryBase<AssetMock>
+        {
+            public AssetFactoryMock(string name, params string[] fileExtensions)
+                : base(name, fileExtensions)
             {
             }
 
@@ -22,9 +30,9 @@ namespace Micro.GameplayFoundation.Tests
         [TestMethod]
         public void AssetFactoryBase_Constructor()
         {
-            var factory = new AssetFactoryMock("Factory", typeof(int), ".file");
+            var factory = new AssetFactoryMock("Factory", ".file");
             Assert.AreEqual("Factory", factory.Name);
-            Assert.AreEqual(typeof(int), factory.AssetType);
+            Assert.AreEqual(typeof(AssetMock), factory.AssetType);
             Assert.AreEqual(1, factory.FileExtensions.Length);
             Assert.AreEqual(".file", factory.FileExtensions[0]);
         }

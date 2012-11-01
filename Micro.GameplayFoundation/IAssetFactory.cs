@@ -11,16 +11,17 @@ namespace Micro.GameplayFoundation
         IAsset LoadAsset(string fullPath);
     }
 
-    public abstract class AssetFactoryBase : IAssetFactory
+    public abstract class AssetFactoryBase<T> : IAssetFactory
+        where T : IAsset 
     {
         public string Name { get; private set; }
         public Type AssetType { get; private set; }
         public string[] FileExtensions { get; private set; }
 
-        public AssetFactoryBase(string name, Type assetType, params string[] fileExtensions)
+        public AssetFactoryBase(string name, params string[] fileExtensions)
         {
             Name = name;
-            AssetType = assetType;
+            AssetType = typeof(T);
             FileExtensions = fileExtensions;
         }
 
