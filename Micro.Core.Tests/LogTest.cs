@@ -22,7 +22,7 @@ namespace Micro.Core.Tests
             {
                 string message = levelString + " Message";
                 var exception = new Exception(levelString);
-                var parameters = new object[] { message, exception };
+                var parameters = new object[] { exception, message };
                 var method = typeof(Log).GetMethod(levelString, parameters.Select(p => p.GetType()).ToArray());
                 method.Invoke(null, parameters);
 

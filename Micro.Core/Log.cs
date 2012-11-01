@@ -32,68 +32,88 @@ namespace Micro.Core
         #region Error
         public static void Error(string message)
         {
-            Error(message, null);
+            Error(null, message);
         }
 
-        public static void Error(string message, Exception exception)
+        public static void Error(Exception exception, string message)
         {
             LogImpl(LogLevel.Error, message, exception);
         }
 
         public static void ErrorFormat(string format, params object[] args)
         {
-            Error(string.Format(format, args), null);
+            Error(null, string.Format(format, args));
+        }
+
+        public static void ErrorFormat(Exception exception, string format, params object[] args)
+        {
+            Error(exception, string.Format(format, args));
         }
         #endregion
 
         #region Warn
         public static void Warn(string message)
         {
-            Warn(message, null);
+            Warn(null, message);
         }
 
-        public static void Warn(string message, Exception exception)
+        public static void Warn(Exception exception, string message)
         {
             LogImpl(LogLevel.Warn, message, exception);
         }
 
         public static void WarnFormat(string format, params object[] args)
         {
-            Warn(string.Format(format, args), null);
+            WarnFormat(null, format, args);
+        }
+
+        public static void WarnFormat(Exception exception, string format, params object[] args)
+        {
+            Warn(exception, string.Format(format, args));
         }
         #endregion
 
         #region Info
         public static void Info(string message)
         {
-            Info(message, null);
+            Info(null, message);
         }
 
-        public static void Info(string message, Exception exception)
+        public static void Info(Exception exception, string message)
         {
             LogImpl(LogLevel.Info, message, exception);
         }
 
         public static void InfoFormat(string format, params object[] args)
         {
-            Info(string.Format(format, args), null);
+            InfoFormat(null, format, args);
+        }
+
+        public static void InfoFormat(Exception exception, string format, params object[] args)
+        {
+            Info(exception, string.Format(format, args));
         }
         #endregion
 
         #region Debug
         public static void Debug(string message)
         {
-            Debug(message, null);
+            Debug(null, message);
         }
 
-        public static void Debug(string message, Exception exception)
+        public static void Debug(Exception exception, string message)
         {
             LogImpl(LogLevel.Debug, message, exception);
         }
 
         public static void DebugFormat(string format, params object[] args)
         {
-            Debug(string.Format(format, args), null);
+            DebugFormat(null, format, args);
+        }
+
+        public static void DebugFormat(Exception exception, string format, params object[] args)
+        {
+            Debug(exception, string.Format(format, args));
         }
         #endregion
 
