@@ -14,6 +14,11 @@ namespace Micro.GameplayFoundation.Tests
             get { return Path.Combine(SolutionRootPath, @"Assets\Test\"); }
         }
 
+        public static string TestAsset
+        {
+            get { return @"TestFile.file"; }
+        }
+
         public static string EngineCoreAssetsPath
         {
             get { return Path.Combine(SolutionRootPath, @"Assets\EngineCore\"); }
