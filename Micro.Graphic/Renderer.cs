@@ -38,8 +38,8 @@ namespace Micro.Graphic
             try
             {
                 // Save primary
-                PrimaryRenderTarget.TargetSurface = this.device.RawDevice.GetRenderTarget(0);
-                PrimaryRenderTarget.DepthStencilSurface = this.device.RawDevice.DepthStencilSurface;
+                PrimaryRenderTarget.TargetSurface = this.device.D3DDevice.GetRenderTarget(0);
+                PrimaryRenderTarget.DepthStencilSurface = this.device.D3DDevice.DepthStencilSurface;
 
                 // Render this render target
                 renderSuccess = RenderToRenderTarget(renderTarget, renderables, present, camera, light);
@@ -60,9 +60,9 @@ namespace Micro.Graphic
             this.device.RenderTarget = target;
 
             if (target.ClearBackGround)
-                this.device.RawDevice.Clear(target.ClearOptions, target.ClearColor.ToArgb(), 1.0f, 0);
+                this.device.D3DDevice.Clear(target.ClearOptions, target.ClearColor.ToArgb(), 1.0f, 0);
 
-            Result result = this.device.RawDevice.BeginScene();
+            Result result = this.device.D3DDevice.BeginScene();
             if (result.IsFailure)
             {
                 Log.Error("BeginScene failed: " + result.ToString());
@@ -81,11 +81,11 @@ namespace Micro.Graphic
             }
             finally
             {
-                this.device.RawDevice.EndScene();
+                this.device.D3DDevice.EndScene();
             }
 
             if (doPresent)
-                this.device.RawDevice.Present();
+                this.device.D3DDevice.Present();
 
             target.OnRender();
 

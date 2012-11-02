@@ -18,7 +18,7 @@ namespace Micro.Graphic.Tests
         public void Device_Constructor()
         {
             Device device = new Device(Window.Handle, Window.Width, Window.Height);
-            Assert.IsNotNull(device.RawDevice);
+            Assert.IsNotNull(device.D3DDevice);
         }
 
         [TestMethod()]

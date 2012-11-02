@@ -38,7 +38,7 @@ namespace Micro.Graphic
         #endregion
 
         #region Public Properties
-        public D3D.Device RawDevice
+        public D3D.Device D3DDevice
         {
             get
             {
@@ -63,14 +63,14 @@ namespace Micro.Graphic
                 if (this.renderTarget == value)
                     return;
 
-                var result = RawDevice.SetRenderTarget(0, value.TargetSurface);
+                var result = D3DDevice.SetRenderTarget(0, value.TargetSurface);
                 if (result.IsFailure)
                 {
                     Log.WarnFormat("SetRenderTarget failed: {0}", result.Description);
                     return;
                 }
 
-                RawDevice.DepthStencilSurface = value.DepthStencilSurface;
+                D3DDevice.DepthStencilSurface = value.DepthStencilSurface;
                 this.renderTarget = value;
             }
         }
@@ -154,6 +154,18 @@ namespace Micro.Graphic
         [System.Runtime.InteropServices.DllImport("user32")]
         private static extern int GetSystemMetrics(int smIndex);
         private const int SM_REMOTESESSION = 0x1000;
+        #endregion
+
+        #region Public Methods
+        public bool BeginScene()
+        {
+            return D3DDevice.BeginScene().IsSuccess;
+        }
+
+        public bool EndScene()
+        {
+            return D3DDevice.EndScene().IsSuccess;
+        }
         #endregion
 
         #region Overrides DisposableObject

@@ -26,14 +26,14 @@ namespace Micro.Graphic
 
         public static Texture Create(Device device, Size size)
         {
-            var rawTexture = new D3D.Texture(device.RawDevice, (int)size.Width, (int)size.Height, 1, D3D.Usage.RenderTarget, D3D.Format.A8R8G8B8, D3D.Pool.Default);
+            var rawTexture = new D3D.Texture(device.D3DDevice, (int)size.Width, (int)size.Height, 1, D3D.Usage.RenderTarget, D3D.Format.A8R8G8B8, D3D.Pool.Default);
             return new Texture(rawTexture, (int)size.Width, (int)size.Height, D3D.ImageFileFormat.Bmp);
         }
 
         public static Texture LoadFromFile(Device device, string filePath)
         {
             var imgInfo = D3D.ImageInformation.FromFile(filePath);
-            var rawTexture = D3D.Texture.FromFile(device.RawDevice, filePath,
+            var rawTexture = D3D.Texture.FromFile(device.D3DDevice, filePath,
                                               imgInfo.Width, imgInfo.Height,
                                               1,
                                               D3D.Usage.None,
@@ -48,7 +48,7 @@ namespace Micro.Graphic
         public static Texture LoadFromStream(Device device, Stream stream)
         {
             var imgInfo = D3D.ImageInformation.FromStream(stream);
-            var rawTexture = D3D.Texture.FromStream(device.RawDevice, stream, (int)(stream.Length - stream.Position),
+            var rawTexture = D3D.Texture.FromStream(device.D3DDevice, stream, (int)(stream.Length - stream.Position),
                                                     imgInfo.Width, imgInfo.Height,
                                                     1,
                                                     D3D.Usage.None,

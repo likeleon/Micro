@@ -3,7 +3,7 @@ using Micro.Core.Math;
 
 namespace Micro.Graphic.Tests
 {
-    public class TestHelpers
+    public static class TestHelpers
     {
         private static Device device;
 
@@ -54,6 +54,24 @@ namespace Micro.Graphic.Tests
         public static RenderableMock CreateRenderableMock(Device device)
         {
             return new RenderableMock();
+        }
+
+        public static void RenderSprite(Action<SpriteRenderer> action)
+        {
+            var spriteRenderer = new SpriteRenderer(device);
+
+            try
+            {
+                Device.BeginScene();
+                spriteRenderer.Begin();
+
+                action(spriteRenderer);
+            }
+            finally
+            {
+                spriteRenderer.End();
+                Device.EndScene();
+            }
         }
     }
 }

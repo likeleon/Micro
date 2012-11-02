@@ -127,5 +127,10 @@ namespace Micro.Core
             };
         }
         #endregion
+
+        public static System.Drawing.Rectangle ToD3DRectangle(this Rectangle rect)
+        {
+            return new System.Drawing.Rectangle((int)rect.Left, (int)rect.Top, (int)rect.Width, (int)rect.Height);
+        }
     }
 }
