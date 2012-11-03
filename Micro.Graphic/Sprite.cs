@@ -26,14 +26,9 @@ namespace Micro.Graphic
 
         public bool Draw(SpriteRenderer renderer)
         {
-            var pivot = new Vector2((SourceRect.Width * Scale.x) / 2, (SourceRect.Height * Scale.y) / 2);
-            var center = pivot;
-
-            var transformMatrix = SlimDX.Matrix.Transformation2D(Vector2.Zero.ToD3DVector2(), 0.0f, Scale.ToD3DVector2(),
-                                                                 center.ToD3DVector2(), Rotation.Value,
-                                                                 Position.ToD3DVector2());
-
-            return renderer.Draw(Texture, SourceRect, ModulateColor, transformMatrix.ToMatrix4());
+            var center = new Vector2((SourceRect.Width * Scale.x) / 2, (SourceRect.Height * Scale.y) / 2);
+            var transformMatrix = Matrix4.Transformation2D(Vector2.Zero, new Radian(0.0f), Scale, center, Rotation, Position);
+            return renderer.Draw(Texture, SourceRect, ModulateColor, transformMatrix);
         }
     }
 }

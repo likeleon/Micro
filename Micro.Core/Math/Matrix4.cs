@@ -327,6 +327,12 @@ namespace Micro.Core.Math
             return result;
         }
 
+        public static Matrix4 Transformation2D(Vector2 scalingCenter, Radian scalingRotation, Vector2 scaling, Vector2 rotationCenter, Radian rotation, Vector2 translation)
+        {
+            return SlimDX.Matrix.Transformation2D(scalingCenter.ToD3DVector2(), scalingRotation.Value, scaling.ToD3DVector2(),
+                                                  rotationCenter.ToD3DVector2(), rotation.Value, translation.ToD3DVector2()).ToMatrix4();
+        }
+
         public override string ToString()
         {
             string result = "Matrix4(";
