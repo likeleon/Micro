@@ -116,7 +116,7 @@ namespace Micro.GameplayFoundation
         //  elapsed: Time passed since the last call to draw
         protected virtual void Draw(float elapsed)
         {
-            Renderer.Render(Renderer.PrimaryRenderTarget, SceneGraph.Renderables, Camera, Light, true);
+            Renderer.Render(Renderer.PrimaryRenderTarget, SceneGraph.Renderables, SceneGraph.Sprites, Camera, Light, true);
         }
 
         // Raises an Exiting event. Override this method to add code to handle when the game is exiting

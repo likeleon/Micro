@@ -55,6 +55,10 @@
       <Project>{13f6a8b7-35a9-406a-8462-8245089d3cc4}</Project>
       <Name>Micro.Graphic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Micro.GUI\Micro.GUI.csproj">
+      <Project>{68e4ac11-88af-4225-9113-62eeaa89c5d4}</Project>
+      <Name>Micro.GUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

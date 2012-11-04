@@ -25,13 +25,15 @@ namespace Micro.Graphic.Tests
         {
             var rs = new Renderer(TestHelpers.Device);
 
-            var renderable = TestHelpers.CreateRenderableMock(TestHelpers.Device);
-            int numRenderCalled = 0;
-            renderable.RenderCalled += ((o, e) => ++numRenderCalled);
+            var renderable = TestHelpers.CreateRenderable();
             var renderables = new List<IRenderable>() { renderable };
 
-            Assert.IsTrue(rs.Render(rs.PrimaryRenderTarget, renderables, new Camera(), new Light(), false));
-            Assert.AreEqual(1, numRenderCalled);
+            var sprite = TestHelpers.CreateSprite();
+            var sprites = new List<ISprite>() { sprite };
+
+            Assert.IsTrue(rs.Render(rs.PrimaryRenderTarget, renderables, sprites, new Camera(), new Light(), false));
+            Assert.AreEqual(1, renderable.NumRenderCalled);
+            Assert.AreEqual(1, sprite.NumDrawCalled);
             Assert.AreEqual(0.0f, rs.PrimaryRenderTarget.LastFps);
         }
 
@@ -39,13 +41,21 @@ namespace Micro.Graphic.Tests
         public void Renderer_RenderFail()
         {
             var rs = new Renderer(TestHelpers.Device);
+            var renderables = new List<IRenderable>();
+            var sprites = new List<ISprite>();
+            var camera = new Camera();
+            var light = new Light();
+
+            Assert.IsTrue(rs.Render(rs.PrimaryRenderTarget, null, null, camera, light, false));
+            Assert.IsTrue(rs.Render(rs.PrimaryRenderTarget, renderables, null, camera, light, false));
+            Assert.IsTrue(rs.Render(rs.PrimaryRenderTarget, null, sprites, camera, light, false));
 
             Assert.IsTrue(
                 TestHelpers.CatchException(typeof(ArgumentNullException),
-                () => rs.Render(rs.PrimaryRenderTarget, null, null, new Light(), false)));
+                () => rs.Render(rs.PrimaryRenderTarget, renderables, sprites, null, light, false)));
             Assert.IsTrue(
                 TestHelpers.CatchException(typeof(ArgumentNullException),
-                () => rs.Render(rs.PrimaryRenderTarget, null, new Camera(), null, false)));
+                () => rs.Render(rs.PrimaryRenderTarget, renderables, sprites, camera, null, false)));
         }
 
         class RenderTargetMock : RenderTarget

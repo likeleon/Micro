@@ -10,7 +10,7 @@ namespace Micro.Graphic
         public TrueTypeFont(Device device, string faceName, int size)
         {
             D3DFont = new D3D.Font(device.D3DDevice, size, 0, D3D.FontWeight.Normal, 0, false,
-                                     D3D.CharacterSet.Default, D3D.Precision.Outline, D3D.FontQuality.Default,
+                                     D3D.CharacterSet.Default, D3D.Precision.Default, D3D.FontQuality.Default,
                                      D3D.PitchAndFamily.Default, faceName);
         }
 

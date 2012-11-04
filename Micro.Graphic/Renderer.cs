@@ -11,7 +11,7 @@ namespace Micro.Graphic
     {
         #region Fields
         private readonly Device device;
-        private readonly IList<IRenderTarget> renderTargets = new List<IRenderTarget>();
+        private readonly SpriteRenderer spriteRenderer;
         #endregion
 
         #region Properties
@@ -25,12 +25,16 @@ namespace Micro.Graphic
                 throw new ArgumentNullException("device");
 
             this.device = device;
+            this.spriteRenderer = new SpriteRenderer(device);
             PrimaryRenderTarget = new RenderTarget();
         }
 
         #region Public methods
-        public bool Render(IRenderTarget renderTarget, IList<IRenderable> renderables, Camera camera, Light light, bool present)
+        public bool Render(IRenderTarget renderTarget, IEnumerable<IRenderable> renderables, IEnumerable<ISprite> sprites, Camera camera, Light light, bool present)
         {
+            if (renderables == null && sprites == null)
+                return true;
+
             if (camera == null || light == null)
                 throw new ArgumentNullException("Argument camera or light is null");
 
@@ -42,7 +46,7 @@ namespace Micro.Graphic
                 PrimaryRenderTarget.DepthStencilSurface = this.device.D3DDevice.DepthStencilSurface;
 
                 // Render this render target
-                renderSuccess = RenderToRenderTarget(renderTarget, renderables, present, camera, light);
+                renderSuccess = RenderToRenderTarget(renderTarget, renderables, sprites, present, camera, light);
             }
             finally
             {
@@ -55,7 +59,7 @@ namespace Micro.Graphic
         #endregion
 
         #region Private methods
-        private bool RenderToRenderTarget(IRenderTarget target, IList<IRenderable> renderables, bool doPresent, Camera camera, Light light)
+        private bool RenderToRenderTarget(IRenderTarget target, IEnumerable<IRenderable> renderables, IEnumerable<ISprite> sprites, bool doPresent, Camera camera, Light light)
         {
             this.device.RenderTarget = target;
 
@@ -71,12 +75,22 @@ namespace Micro.Graphic
 
             try
             {
-                if (renderables != null && renderables.Count > 0)
+                if (renderables != null)
                 {
                     foreach (var renderable in renderables)
                     {
                         renderable.Render(camera, light);
                     }
+                }
+
+                if (sprites != null)
+                {
+                    this.spriteRenderer.Begin();
+                    foreach (var sprite in sprites)
+                    {
+                        sprite.Draw(this.spriteRenderer);
+                    }
+                    this.spriteRenderer.End();
                 }
             }
             finally

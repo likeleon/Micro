@@ -44,13 +44,32 @@ namespace Micro.Graphic.Tests
                 return true;
             }
 
-            public Matrix4 WorldMatrix { get { return Matrix4.Identity; } }
             public int NumRenderCalled { get; private set; }
         };
 
-        public static RenderableMock CreateRenderableMock(Device device)
+        public static RenderableMock CreateRenderable()
         {
             return new RenderableMock();
+        }
+
+        // ISprite mock
+        public class SpriteMock : ISprite
+        {
+            public event EventHandler DrawCalled = delegate { };
+
+            bool ISprite.Draw(SpriteRenderer renderer)
+            {
+                DrawCalled(this, EventArgs.Empty);
+                ++NumDrawCalled;
+                return true;
+            }
+
+            public int NumDrawCalled { get; private set; }
+        }
+
+        public static SpriteMock CreateSprite()
+        {
+            return new SpriteMock();
         }
 
         public static void RenderSprite(Action<SpriteRenderer> action)

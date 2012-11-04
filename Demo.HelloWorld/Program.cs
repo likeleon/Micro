@@ -1,6 +1,8 @@
 ﻿using System;
+using Micro.Core;
 using Micro.GameplayFoundation;
 using Micro.Graphic;
+using Micro.GUI;
 
 namespace Demo.HelloWorld
 {
@@ -8,24 +10,23 @@ namespace Demo.HelloWorld
     {
         private class HelloWorldGame : Game
         {
-            private readonly TrueTypeFont font;
-
             public HelloWorldGame(int width, int height)
                 : base("HelloWorld", width, height)
             {
-                this.font = new TrueTypeFont(Device, "Consolas", 12);
-            }
-
-            protected override void Draw(float elapsed)
-            {
-                base.Draw(elapsed);
+                var msgTextBlock = new TextBlock()
+                {
+                    Foreground = Color.White,
+                    Font = new TrueTypeFont(Device, "Consolas", 14),
+                    Text = "Hello, World"
+                };
+                SceneGraph.AddSprite(msgTextBlock);
             }
         }
 
         [STAThread]
         static void Main(string[] args)
         {
-            var game = new HelloWorldGame(1024, 768);
+            var game = new HelloWorldGame(800, 600);
             game.Run();
         }
     }
