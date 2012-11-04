@@ -26,6 +26,11 @@ namespace Micro.Graphic
             return ret.IsSuccess;
         }
 
+        public bool Draw(string text, TrueTypeFont font, int x, int y, Color color)
+        {
+            return (font.D3DFont.DrawString(this.d3dSprite, text, x, y, color.ToArgb()) != 0);
+        }
+
         public bool End()
         {
             return this.d3dSprite.End().IsSuccess;

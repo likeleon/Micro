@@ -1,5 +1,6 @@
 ﻿using System;
 using Micro.GameplayFoundation;
+using Micro.Graphic;
 
 namespace Demo.HelloWorld
 {
@@ -7,9 +8,17 @@ namespace Demo.HelloWorld
     {
         private class HelloWorldGame : Game
         {
+            private readonly TrueTypeFont font;
+
             public HelloWorldGame(int width, int height)
                 : base("HelloWorld", width, height)
             {
+                this.font = new TrueTypeFont(Device, "Consolas", 12);
+            }
+
+            protected override void Draw(float elapsed)
+            {
+                base.Draw(elapsed);
             }
         }
 

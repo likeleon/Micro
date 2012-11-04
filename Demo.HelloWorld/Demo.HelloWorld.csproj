@@ -43,9 +43,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Micro.Core\Micro.Core.csproj">
+      <Project>{4682dc83-c427-4bc4-bcc7-726b833e018b}</Project>
+      <Name>Micro.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Micro.GameplayFoundation\Micro.GameplayFoundation.csproj">
       <Project>{7f8aabbf-2beb-415e-b62b-82af7546a821}</Project>
       <Name>Micro.GameplayFoundation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Micro.Graphic\Micro.Graphic.csproj">
+      <Project>{13f6a8b7-35a9-406a-8462-8245089d3cc4}</Project>
+      <Name>Micro.Graphic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

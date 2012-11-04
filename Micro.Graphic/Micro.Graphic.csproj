@@ -58,6 +58,7 @@
     <Compile Include="Sprite.cs" />
     <Compile Include="SpriteRenderer.cs" />
     <Compile Include="Texture.cs" />
+    <Compile Include="TrueTypeFont.cs" />
     <Compile Include="Window.cs" />
   </ItemGroup>
   <ItemGroup>

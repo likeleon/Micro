@@ -14,6 +14,8 @@ namespace Micro.GameplayFoundation.Tests
             Assert.AreEqual(640, game.Width);
             Assert.AreEqual(480, game.Height);
             Assert.AreEqual(1000 / 60, game.TargetElapsedTime);
+            Assert.IsNotNull(game.Device);
+            Assert.IsNotNull(game.Renderer);
             Assert.IsNotNull(game.SceneGraph);
             Assert.IsNotNull(game.Camera);
             Assert.IsNotNull(game.Light);

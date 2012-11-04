@@ -5,20 +5,15 @@ namespace Micro.Graphic.Tests
 {
     public static class TestHelpers
     {
-        private static Device device;
-
-        public static Device Device
+        static TestHelpers()
         {
-            get
-            {
-                if (device == null)
-                {
-                    Window window = new Window("TestHelpers.GetDevice", 640, 480);
-                    device = new Device(window.Handle, window.Width, window.Height);
-                }
-                return device;
-            }
+            Window window = new Window("TestHelpers.GetDevice", 640, 480);
+            Device = new Device(window.Handle, window.Width, window.Height);
+            SpriteRenderer = new SpriteRenderer(Device);
         }
+
+        public static Device Device { get; private set; }
+        public static SpriteRenderer SpriteRenderer { get; private set; }
 
         public static bool CatchException(Type targetException, Action action)
         {
@@ -58,18 +53,16 @@ namespace Micro.Graphic.Tests
 
         public static void RenderSprite(Action<SpriteRenderer> action)
         {
-            var spriteRenderer = new SpriteRenderer(device);
-
             try
             {
                 Device.BeginScene();
-                spriteRenderer.Begin();
+                SpriteRenderer.Begin();
 
-                action(spriteRenderer);
+                action(SpriteRenderer);
             }
             finally
             {
-                spriteRenderer.End();
+                SpriteRenderer.End();
                 Device.EndScene();
             }
         }
