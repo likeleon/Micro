@@ -4,41 +4,51 @@ namespace Micro.Graphic
 {
     public sealed class SceneGraph
     {
-        public List<IRenderable> Renderables { get; private set; }
-        public List<ISprite> Sprites { get; private set; }
+        public IEnumerable<IRenderable> Renderables
+        {
+            get { return this.renderables; }
+        }
+
+        public IEnumerable<ISprite> Sprites
+        {
+            get { return this.sprites; }
+        }
+
+        private readonly List<IRenderable> renderables;
+        private readonly List<ISprite> sprites;
 
         public SceneGraph()
         {
-            Renderables = new List<IRenderable>();
-            Sprites = new List<ISprite>();
+            this.renderables = new List<IRenderable>();
+            this.sprites = new List<ISprite>();
         }
 
         public bool AddRenderable(IRenderable renderable)
         {
-            if (Renderables.Contains(renderable))
+            if (this.renderables.Contains(renderable))
                 return false;
 
-            Renderables.Add(renderable);
+            this.renderables.Add(renderable);
             return true;
         }
 
         public bool RemoveRenderable(IRenderable renderable)
         {
-            return Renderables.Remove(renderable);
+            return this.renderables.Remove(renderable);
         }
 
         public bool AddSprite(ISprite sprite)
         {
-            if (Sprites.Contains(sprite))
+            if (this.sprites.Contains(sprite))
                 return false;
 
-            Sprites.Add(sprite);
+            this.sprites.Add(sprite);
             return true;
         }
 
         public bool RemoveSprite(ISprite sprite)
         {
-            return Sprites.Remove(sprite);
+            return this.sprites.Remove(sprite);
         }
     }
 }
