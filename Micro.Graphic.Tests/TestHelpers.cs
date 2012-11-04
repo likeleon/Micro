@@ -7,13 +7,15 @@ namespace Micro.Graphic.Tests
     {
         static TestHelpers()
         {
-            Window window = new Window("TestHelpers.GetDevice", 640, 480);
+            Window window = new Window("TestHelpers.Device", 320, 240);
             Device = new Device(window.Handle, window.Width, window.Height);
             SpriteRenderer = new SpriteRenderer(Device);
+            Font = new TrueTypeFont(Device, "Arial", 12);
         }
 
         public static Device Device { get; private set; }
         public static SpriteRenderer SpriteRenderer { get; private set; }
+        public static TrueTypeFont Font { get; private set; }
 
         public static bool CatchException(Type targetException, Action action)
         {

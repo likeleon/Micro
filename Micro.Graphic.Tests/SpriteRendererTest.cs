@@ -17,8 +17,7 @@ namespace Micro.Graphic.Tests
         [TestMethod()]
         public void SpriteRenderer_Draw_String()
         {
-            var font = new TrueTypeFont(TestHelpers.Device, "Arial", 12);
-            TestHelpers.RenderSprite(r => Assert.IsTrue(r.Draw("Text", font, 0, 0, Color.Black)));
+            TestHelpers.RenderSprite(r => Assert.IsTrue(r.Draw("Text", TestHelpers.Font, 0, 0, Color.Black)));
         }
     }
 }

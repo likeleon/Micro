@@ -24,7 +24,7 @@ namespace Micro.GUI.Tests
         {
             var textBlock = new TextBlock()
             {
-                Font = new TrueTypeFont(TestHelpers.Device, "Arial", 12),
+                Font = TestHelpers.Font,
                 Text = "Text will be displayed",
                 Foreground = Color.White
             };
@@ -38,7 +38,7 @@ namespace Micro.GUI.Tests
             var textBlock = new TextBlock();
             TestHelpers.RenderSprite(s => Assert.IsFalse(textBlock.Draw(s), "Should fail if font is null"));
 
-            textBlock.Font = new TrueTypeFont(TestHelpers.Device, "Arial", 12);
+            textBlock.Font = TestHelpers.Font;
             textBlock.Text = null;
             TestHelpers.RenderSprite(s => Assert.IsFalse(textBlock.Draw(s), "Should fail if Text is null"));
         }
