@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Micro.Core;
-using SlimDX;
+using Micro.Core.Math;
+using D3D = SlimDX.Direct3D9;
 
 namespace Micro.Graphic
 {
@@ -11,7 +10,7 @@ namespace Micro.Graphic
     {
         #region Fields
         private readonly Device device;
-        private readonly SpriteRenderer spriteRenderer;
+        private readonly D3D.Sprite d3dSprite;
         #endregion
 
         #region Properties
@@ -25,7 +24,7 @@ namespace Micro.Graphic
                 throw new ArgumentNullException("device");
 
             this.device = device;
-            this.spriteRenderer = new SpriteRenderer(device);
+            this.d3dSprite = new D3D.Sprite(device.D3DDevice);
             PrimaryRenderTarget = new RenderTarget();
         }
 
@@ -56,6 +55,29 @@ namespace Micro.Graphic
 
             return renderSuccess;
         }
+
+        public bool BeginDraw()
+        {
+            return this.d3dSprite.Begin(D3D.SpriteFlags.AlphaBlend).IsSuccess;
+        }
+
+        public bool EndDraw()
+        {
+            return this.d3dSprite.End().IsSuccess;
+        }
+
+        public bool Draw(Texture texture, Rectangle sourceRect, Color modulateColor, Matrix4 transformMatrix)
+        {
+            this.d3dSprite.Transform = transformMatrix.ToD3DMatrix();
+            var ret = this.d3dSprite.Draw(texture.RawTexture, sourceRect.ToD3DRectangle(), modulateColor.ToD3DColor4());
+            this.d3dSprite.Transform = SlimDX.Matrix.Identity;
+            return ret.IsSuccess;
+        }
+
+        public bool Draw(string text, TrueTypeFont font, Vector2 position, Color color)
+        {
+            return (font.D3DFont.DrawString(this.d3dSprite, text, (int)position.x, (int)position.y, color.ToArgb()) != 0);
+        }
         #endregion
 
         #region Private methods
@@ -66,7 +88,7 @@ namespace Micro.Graphic
             if (target.ClearBackGround)
                 this.device.D3DDevice.Clear(target.ClearOptions, target.ClearColor.ToArgb(), 1.0f, 0);
 
-            Result result = this.device.D3DDevice.BeginScene();
+            SlimDX.Result result = this.device.D3DDevice.BeginScene();
             if (result.IsFailure)
             {
                 Log.Error("BeginScene failed: " + result.ToString());
@@ -85,12 +107,12 @@ namespace Micro.Graphic
 
                 if (sprites != null)
                 {
-                    this.spriteRenderer.Begin();
+                    BeginDraw();
                     foreach (var sprite in sprites)
                     {
-                        sprite.Draw(this.spriteRenderer);
+                        sprite.Draw(this);
                     }
-                    this.spriteRenderer.End();
+                    EndDraw();
                 }
             }
             finally

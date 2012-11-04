@@ -20,12 +20,12 @@ namespace Micro.GUI
         }
 
         #region Implements ISprite
-        public bool Draw(SpriteRenderer renderer)
+        public bool Draw(Renderer renderer)
         {
             if (Font == null || string.IsNullOrWhiteSpace(Text))
                 return false;
 
-            return renderer.Draw(Text, Font, (int)Position.x, (int)Position.y, Foreground);
+            return renderer.Draw(Text, Font, Position, Foreground);
         }
         #endregion
     }

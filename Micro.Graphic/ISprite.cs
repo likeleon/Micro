@@ -3,6 +3,6 @@ namespace Micro.Graphic
 {
     public interface ISprite
     {
-        bool Draw(SpriteRenderer renderer);
+        bool Draw(Renderer renderer);
     }
 }

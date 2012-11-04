@@ -1,4 +1,5 @@
 ﻿using Micro.Core;
+using Micro.Core.Math;
 using D3D = SlimDX.Direct3D9;
 
 namespace Micro.Graphic

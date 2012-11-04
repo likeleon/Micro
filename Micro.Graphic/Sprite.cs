@@ -24,7 +24,7 @@ namespace Micro.Graphic
             SourceRect = new Rectangle(0, 0, Texture.Width, Texture.Height);
         }
 
-        public bool Draw(SpriteRenderer renderer)
+        public bool Draw(Renderer renderer)
         {
             var center = new Vector2((SourceRect.Width * Scale.x) / 2, (SourceRect.Height * Scale.y) / 2);
             var transformMatrix = Matrix4.Transformation2D(Vector2.Zero, new Radian(0.0f), Scale, center, Rotation, Position);

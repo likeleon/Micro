@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Micro.Core;
+using Micro.Core.Math;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Micro.Graphic.Tests
@@ -66,6 +68,12 @@ namespace Micro.Graphic.Tests
             {
                 ++NumRenderCalled;
             }
+        }
+    
+        [TestMethod()]
+        public void Renderer_DrawString()
+        {
+            TestHelpers.RenderSprite(r => r.Draw("Tesxt", TestHelpers.Font, Vector2.Zero, Color.Red));
         }
     }
 }

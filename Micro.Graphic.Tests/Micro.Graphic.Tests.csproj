@@ -71,7 +71,6 @@
     <Compile Include="TestHelpers.cs" />
     <Compile Include="SceneGraphTest.cs" />
     <Compile Include="TextureTest.cs" />
-    <Compile Include="SpriteRendererTest.cs" />
     <Compile Include="TrueTypeFontTest.cs" />
     <Compile Include="WindowTest.cs" />
   </ItemGroup>

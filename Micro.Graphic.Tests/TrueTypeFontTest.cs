@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Micro.Core;
+using Micro.Core.Math;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Micro.Graphic.Tests
 {

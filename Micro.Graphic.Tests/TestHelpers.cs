@@ -1,5 +1,6 @@
 ﻿using System;
 using Micro.Core.Math;
+using D3D = SlimDX.Direct3D9;
 
 namespace Micro.Graphic.Tests
 {
@@ -9,12 +10,12 @@ namespace Micro.Graphic.Tests
         {
             Window window = new Window("TestHelpers.Device", 320, 240);
             Device = new Device(window.Handle, window.Width, window.Height);
-            SpriteRenderer = new SpriteRenderer(Device);
+            Renderer = new Renderer(Device);
             Font = new TrueTypeFont(Device, "Arial", 12);
         }
 
         public static Device Device { get; private set; }
-        public static SpriteRenderer SpriteRenderer { get; private set; }
+        public static Renderer Renderer { get; private set; }
         public static TrueTypeFont Font { get; private set; }
 
         public static bool CatchException(Type targetException, Action action)
@@ -57,7 +58,7 @@ namespace Micro.Graphic.Tests
         {
             public event EventHandler DrawCalled = delegate { };
 
-            bool ISprite.Draw(SpriteRenderer renderer)
+            bool ISprite.Draw(Renderer renderer)
             {
                 DrawCalled(this, EventArgs.Empty);
                 ++NumDrawCalled;
@@ -72,18 +73,18 @@ namespace Micro.Graphic.Tests
             return new SpriteMock();
         }
 
-        public static void RenderSprite(Action<SpriteRenderer> action)
+        public static void RenderSprite(Action<Renderer> action)
         {
             try
             {
                 Device.BeginScene();
-                SpriteRenderer.Begin();
+                Renderer.BeginDraw();
 
-                action(SpriteRenderer);
+                action(Renderer);
             }
             finally
             {
-                SpriteRenderer.End();
+                Renderer.EndDraw();
                 Device.EndScene();
             }
         }
