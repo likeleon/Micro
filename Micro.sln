@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.GUI", "Micro.GUI\Micr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.GUI.Tests", "Micro.GUI.Tests\Micro.GUI.Tests.csproj", "{48F1E437-3739-4EE5-A6EB-41B2F3434C3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Editor", "Micro.Editor\Micro.Editor.csproj", "{328C5743-E74D-42DC-B265-1B7AB7A33B82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -61,6 +63,10 @@ Global
 		{48F1E437-3739-4EE5-A6EB-41B2F3434C3C}.Debug|x86.Build.0 = Debug|x86
 		{48F1E437-3739-4EE5-A6EB-41B2F3434C3C}.Release|x86.ActiveCfg = Release|x86
 		{48F1E437-3739-4EE5-A6EB-41B2F3434C3C}.Release|x86.Build.0 = Release|x86
+		{328C5743-E74D-42DC-B265-1B7AB7A33B82}.Debug|x86.ActiveCfg = Debug|x86
+		{328C5743-E74D-42DC-B265-1B7AB7A33B82}.Debug|x86.Build.0 = Debug|x86
+		{328C5743-E74D-42DC-B265-1B7AB7A33B82}.Release|x86.ActiveCfg = Release|x86
+		{328C5743-E74D-42DC-B265-1B7AB7A33B82}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
