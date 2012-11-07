@@ -1,8 +1,8 @@
-﻿<Window x:Class="Micro.Editor.Shell"
+﻿<elysium:Window x:Class="Micro.Editor.Shell"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:elysium="http://schemas.codeplex.com/elysium/theme"
         Title="Micro Editor">
-    <Grid>
-        
-    </Grid>
-</Window>
+    <DockPanel>
+    </DockPanel>
+</elysium:Window>
