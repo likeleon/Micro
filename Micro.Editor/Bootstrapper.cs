@@ -8,6 +8,8 @@ namespace Micro.Editor
     [CLSCompliant(false)]
     public class Bootstrapper : MefBootstrapper
     {
+        private readonly EnterpriseLibraryLoggerAdapter logger = new EnterpriseLibraryLoggerAdapter();
+
         protected override System.Windows.DependencyObject CreateShell()
         {
             return Container.GetExportedValue<Shell>();
@@ -29,6 +31,11 @@ namespace Micro.Editor
         protected override void ConfigureAggregateCatalog()
         {
             AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(Bootstrapper).Assembly));
+        }
+
+        protected override Microsoft.Practices.Prism.Logging.ILoggerFacade CreateLogger()
+        {
+            return this.logger;
         }
     }
 }
