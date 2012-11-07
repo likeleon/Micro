@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
 
 namespace Micro.Editor
 {
@@ -42,9 +43,9 @@ namespace Micro.Editor
             if (ex == null)
                 return;
 
-            //ExceptionPolicy.HandleException(ex, "Default Policy");
-            //MessageBox.Show(StockTraderRI.Properties.Resources.UnhandledException);
-            //Environment.Exit(1);
+            ExceptionPolicy.HandleException(ex, "Default Policy");
+            MessageBox.Show(Micro.Editor.Properties.Resources.UnhandledException);
+            Environment.Exit(1);
         }
     }
 }
