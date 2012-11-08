@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.Composition;
 using System.Windows;
-using Elysium.Theme;
+using System.Windows.Media;
+using Elysium;
+using Elysium.Notifications;
 
 namespace Micro.Editor
 {
@@ -10,7 +12,7 @@ namespace Micro.Editor
         public Shell()
         {
             InitializeComponent();
-            ThemeManager.Instance.Dark(ThemeManager.Instance.Accent);
+            Application.Current.Apply(Theme.Dark, AccentBrushes.Blue, Brushes.White);
         }
     }
 }

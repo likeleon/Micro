@@ -4,20 +4,4 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d">
-    <!-- Menu Style -->
-    <Style x:Key="MenuStyle" TargetType="{x:Type Menu}">
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Menu}">
-                    <Border BorderBrush="{DynamicResource BackgroundBrush}"
-							BorderThickness="0,0,0,1"
-							Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true" Margin="0">
-                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 </ResourceDictionary>

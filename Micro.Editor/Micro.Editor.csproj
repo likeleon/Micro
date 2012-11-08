@@ -41,8 +41,14 @@
     <Reference Include="AvalonDock.Themes.Expression">
       <HintPath>..\Externals\AvalonDock\AvalonDock.Themes.Expression.dll</HintPath>
     </Reference>
-    <Reference Include="Elysium.Theme">
-      <HintPath>..\Externals\Elysium\Elysium.Theme.dll</HintPath>
+    <Reference Include="Elysium">
+      <HintPath>..\Externals\Elysium\Elysium.dll</HintPath>
+    </Reference>
+    <Reference Include="Elysium.Notifications">
+      <HintPath>..\Externals\Elysium\Elysium.Notifications.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Drawing">
+      <HintPath>..\Externals\Elysium\Microsoft.Expression.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions">
       <HintPath>..\Externals\Elysium\Microsoft.Expression.Interactions.dll</HintPath>
@@ -79,9 +85,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Interactivity">
-      <HintPath>..\Externals\Elysium\System.Windows.Interactivity.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
