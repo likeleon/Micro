@@ -4,15 +4,17 @@
         xmlns:metro="http://schemas.codeplex.com/elysium"
         xmlns:params="http://schemas.codeplex.com/elysium/params"
         xmlns:avalonDock="http://avalondock.codeplex.com"
+        Background="{DynamicResource BackgroundBrush}"
         WindowStartupLocation="CenterScreen"
         Title="Micro Editor">
     <DockPanel>
         <Menu IsMainMenu="True" DockPanel.Dock="Top" Margin="0">
             <MenuItem Header="_FILE">
-                <MenuItem Header="_New" />
-                <Separator />
-                <MenuItem Header="E_xit" />
+                <MenuItem Header="E_xit" InputGestureText="Alt+F4" />
             </MenuItem>
+            <MenuItem Header="_VIEW" />
+            <MenuItem Header="_PROJECT" />
+            <MenuItem Header="_HELP" />
         </Menu>
         <StatusBar DockPanel.Dock="Bottom"
                    Background="{DynamicResource AccentBrush}"
