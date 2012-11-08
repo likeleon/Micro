@@ -35,6 +35,12 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AvalonDock">
+      <HintPath>..\Externals\AvalonDock\AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="AvalonDock.Themes.Expression">
+      <HintPath>..\Externals\AvalonDock\AvalonDock.Themes.Expression.dll</HintPath>
+    </Reference>
     <Reference Include="Elysium.Theme">
       <HintPath>..\Externals\Elysium\Elysium.Theme.dll</HintPath>
     </Reference>
@@ -128,6 +134,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Micro.Editor.Infrastructure\Micro.Editor.Infrastructure.csproj">
+      <Project>{274d9fcf-4a83-4cac-b9d9-3a34bf955905}</Project>
+      <Name>Micro.Editor.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{3BA1A0A4-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Editor", "Editor", "{F8186AE7-A601-498A-8ED3-2FA7781A6A2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Editor.Infrastructure", "Micro.Editor.Infrastructure\Micro.Editor.Infrastructure.csproj", "{274D9FCF-4A83-4CAC-B9D9-3A34BF955905}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -73,6 +75,10 @@ Global
 		{328C5743-E74D-42DC-B265-1B7AB7A33B82}.Debug|x86.Build.0 = Debug|x86
 		{328C5743-E74D-42DC-B265-1B7AB7A33B82}.Release|x86.ActiveCfg = Release|x86
 		{328C5743-E74D-42DC-B265-1B7AB7A33B82}.Release|x86.Build.0 = Release|x86
+		{274D9FCF-4A83-4CAC-B9D9-3A34BF955905}.Debug|x86.ActiveCfg = Debug|x86
+		{274D9FCF-4A83-4CAC-B9D9-3A34BF955905}.Debug|x86.Build.0 = Debug|x86
+		{274D9FCF-4A83-4CAC-B9D9-3A34BF955905}.Release|x86.ActiveCfg = Release|x86
+		{274D9FCF-4A83-4CAC-B9D9-3A34BF955905}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,5 +94,6 @@ Global
 		{68E4AC11-88AF-4225-9113-62EEAA89C5D4} = {770AAF8F-672A-450A-A897-BFCEED1AC91D}
 		{BED77B15-BF8D-4C3A-BF48-23D94BCA174D} = {3BA1A0A4-FAD9-4639-9D79-64ADDD672092}
 		{328C5743-E74D-42DC-B265-1B7AB7A33B82} = {F8186AE7-A601-498A-8ED3-2FA7781A6A2A}
+		{274D9FCF-4A83-4CAC-B9D9-3A34BF955905} = {F8186AE7-A601-498A-8ED3-2FA7781A6A2A}
 	EndGlobalSection
 EndGlobal
