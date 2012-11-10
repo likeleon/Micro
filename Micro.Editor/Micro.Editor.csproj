@@ -41,13 +41,16 @@
     <Reference Include="AvalonDock.Themes.Expression">
       <HintPath>..\Externals\AvalonDock\AvalonDock.Themes.Expression.dll</HintPath>
     </Reference>
-    <Reference Include="Elysium">
+    <Reference Include="Elysium, Version=1.5.797.0, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Externals\Elysium\Elysium.dll</HintPath>
     </Reference>
-    <Reference Include="Elysium.Notifications">
+    <Reference Include="Elysium.Notifications, Version=1.5.28.0, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Externals\Elysium\Elysium.Notifications.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Expression.Drawing">
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Externals\Elysium\Microsoft.Expression.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions">

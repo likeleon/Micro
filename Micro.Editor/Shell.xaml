@@ -1,12 +1,18 @@
 ﻿<metro:Window x:Class="Micro.Editor.Shell"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:prism="http://www.codeplex.com/prism"
         xmlns:metro="http://schemas.codeplex.com/elysium"
         xmlns:params="http://schemas.codeplex.com/elysium/params"
         xmlns:avalonDock="http://avalondock.codeplex.com"
+        xmlns:Models="clr-namespace:Micro.Editor.Infrastructure.Models;assembly=Micro.Editor.Infrastructure"
+        xmlns:Converters="clr-namespace:Micro.Editor.Infrastructure.Converters;assembly=Micro.Editor.Infrastructure"
         Background="{DynamicResource BackgroundBrush}"
         WindowStartupLocation="CenterScreen"
         Title="Micro Editor">
+    <metro:Window.Resources>
+        <Converters:ActiveDocumentConverter x:Key="ActiveDocumentConverter"/>
+    </metro:Window.Resources>
     <DockPanel>
         <Menu IsMainMenu="True" DockPanel.Dock="Top" Margin="0">
             <MenuItem Header="_FILE">
@@ -24,22 +30,16 @@
                 <TextBlock Text="Ready" />
             </StatusBarItem>
         </StatusBar>
-        <avalonDock:DockingManager AllowMixedOrientation="True" Background="{DynamicResource BackgroundBrush}">
+        <avalonDock:DockingManager DocumentsSource="{Binding Documents}"
+                                   ActiveContent="{Binding ActiveDocument, Converter={StaticResource ActiveDocumentConverter}, Mode=TwoWay}"
+                                   prism:RegionManager.RegionName="{x:Static Models:RegionNames.AvalonDocumentRegion}"
+                                   Background="{DynamicResource BackgroundBrush}">
             <avalonDock:DockingManager.Theme>
                 <avalonDock:ExpressionDarkTheme />
             </avalonDock:DockingManager.Theme>
             <avalonDock:LayoutRoot>
-                <avalonDock:LayoutPanel Orientation="Horizontal">
-                    <avalonDock:LayoutDocumentPaneGroup>
-                        <avalonDock:LayoutDocumentPane>
-                            <avalonDock:LayoutDocument ContentId="document1" Title="Document 1">
-                                <TextBlock Background="{DynamicResource BackgroundBrush}" />
-                            </avalonDock:LayoutDocument>
-                            <avalonDock:LayoutDocument ContentId="document2" Title="Document 2">
-                                <TextBlock Background="{DynamicResource BackgroundBrush}" />
-                            </avalonDock:LayoutDocument>
-                        </avalonDock:LayoutDocumentPane>
-                    </avalonDock:LayoutDocumentPaneGroup>
+                <avalonDock:LayoutPanel>
+                    <avalonDock:LayoutDocumentPane />
                 </avalonDock:LayoutPanel>
             </avalonDock:LayoutRoot>
         </avalonDock:DockingManager>
