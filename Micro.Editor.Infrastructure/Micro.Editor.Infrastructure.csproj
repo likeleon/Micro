@@ -58,6 +58,7 @@
     <Compile Include="Converters\ActiveDocumentConverter.cs" />
     <Compile Include="IViewRegionRegistration.cs" />
     <Compile Include="Models\RegionNames.cs" />
+    <Compile Include="PanesStyleSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegionAdapters\DockingManagerRegionAdapter.cs" />
     <Compile Include="ViewExportAttribute.cs" />

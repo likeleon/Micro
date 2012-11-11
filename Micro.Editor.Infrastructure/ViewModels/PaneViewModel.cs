@@ -7,11 +7,12 @@ namespace Micro.Editor.Infrastructure.ViewModels
     {
         private string title;
         private string contentId;
+        private string toolTip;
 
         public string Title
         {
             get { return this.title; }
-            set
+            private set
             {
                 if (this.title != value)
                 {
@@ -29,7 +30,7 @@ namespace Micro.Editor.Infrastructure.ViewModels
         public string ContentId
         {
             get { return this.contentId; }
-            protected set
+            private set
             {
                 if (this.contentId != value)
                 {
@@ -37,6 +38,26 @@ namespace Micro.Editor.Infrastructure.ViewModels
                     NotifyOfPropertyChange(() => ContentId);
                 }
             }
+        }
+
+        public string ToolTip
+        {
+            get { return this.toolTip; }
+            protected set
+            {
+                if (this.toolTip != value)
+                {
+                    this.toolTip = value;
+                    NotifyOfPropertyChange(() => ToolTip);
+                }
+            }
+        }
+
+        protected PaneViewModel(string title, string contentId)
+        {
+            Title = title;
+            ContentId = contentId;
+            ToolTip = Title;
         }
     }
 }

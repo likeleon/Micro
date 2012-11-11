@@ -63,6 +63,10 @@
     <Compile Include="ViewModels\AssetBrowserViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Micro.Editor.Infrastructure\Micro.Editor.Infrastructure.csproj">
+      <Project>{274d9fcf-4a83-4cac-b9d9-3a34bf955905}</Project>
+      <Name>Micro.Editor.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Micro.Editor.Modules.AssetBrowser\Micro.Editor.Modules.AssetBrowser.csproj">
       <Project>{258f862b-21ff-4cbc-aaf3-8d8788ed451c}</Project>
       <Name>Micro.Editor.Modules.AssetBrowser</Name>

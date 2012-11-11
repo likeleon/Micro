@@ -5,6 +5,7 @@
         xmlns:metro="http://schemas.codeplex.com/elysium"
         xmlns:params="http://schemas.codeplex.com/elysium/params"
         xmlns:avalonDock="http://avalondock.codeplex.com"
+        xmlns:Infrastructure="clr-namespace:Micro.Editor.Infrastructure;assembly=Micro.Editor.Infrastructure"
         xmlns:Models="clr-namespace:Micro.Editor.Infrastructure.Models;assembly=Micro.Editor.Infrastructure"
         xmlns:Converters="clr-namespace:Micro.Editor.Infrastructure.Converters;assembly=Micro.Editor.Infrastructure"
         Background="{DynamicResource BackgroundBrush}"
@@ -40,6 +41,19 @@
                     <avalonDock:LayoutDocumentPane />
                 </avalonDock:LayoutPanel>
             </avalonDock:LayoutRoot>
+            <avalonDock:DockingManager.LayoutItemContainerStyleSelector>
+                <Infrastructure:PanesStyleSelector>
+                    <Infrastructure:PanesStyleSelector.DocumentStyle>
+                        <Style TargetType="{x:Type avalonDock:LayoutItem}">
+                            <Setter Property="Title" Value="{Binding Model.DataContext.Title}"/>
+                            <Setter Property="ToolTip" Value="{Binding Model.DataContext.ToolTip}"/>
+                            <Setter Property="CloseCommand" Value="{Binding Model.DataContext.CloseCommand}"/>
+                            <Setter Property="IconSource" Value="{Binding Model.DataContext.IconSource}"/>
+                            <Setter Property="ContentId" Value="{Binding Model.DataContext.ContentId}"/>
+                        </Style>
+                    </Infrastructure:PanesStyleSelector.DocumentStyle>
+                </Infrastructure:PanesStyleSelector>
+            </avalonDock:DockingManager.LayoutItemContainerStyleSelector>
         </avalonDock:DockingManager>
     </DockPanel>
 </metro:Window>
