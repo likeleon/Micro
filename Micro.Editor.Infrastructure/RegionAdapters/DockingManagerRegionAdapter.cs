@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using AvalonDock;
+using Micro.Editor.Infrastructure.Behaviors;
 using Microsoft.Practices.Prism.Regions;
 
 namespace Micro.Editor.Infrastructure.RegionAdapters
@@ -28,6 +29,8 @@ namespace Micro.Editor.Infrastructure.RegionAdapters
         {
             if (region == null)
                 throw new ArgumentNullException("region");
+
+            region.Behaviors.Add(DockingManagerDocumentsSourceSyncBehavior.BehaviorKey, new DockingManagerDocumentsSourceSyncBehavior() { HostControl = regionTarget });
 
             base.AttachBehaviors(region, regionTarget);
         }

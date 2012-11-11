@@ -30,9 +30,7 @@
                 <TextBlock Text="Ready" />
             </StatusBarItem>
         </StatusBar>
-        <avalonDock:DockingManager DocumentsSource="{Binding Documents}"
-                                   ActiveContent="{Binding ActiveDocument, Converter={StaticResource ActiveDocumentConverter}, Mode=TwoWay}"
-                                   prism:RegionManager.RegionName="{x:Static Models:RegionNames.AvalonDocumentRegion}"
+        <avalonDock:DockingManager prism:RegionManager.RegionName="{x:Static Models:RegionNames.AvalonDocumentRegion}"
                                    Background="{DynamicResource BackgroundBrush}">
             <avalonDock:DockingManager.Theme>
                 <avalonDock:ExpressionDarkTheme />

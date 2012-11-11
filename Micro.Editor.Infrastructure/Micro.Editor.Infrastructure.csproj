@@ -53,6 +53,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\DockingManagerDocumentsSourceSyncBehavior.cs" />
     <Compile Include="Converters\ActiveDocumentConverter.cs" />
     <Compile Include="Models\RegionNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
