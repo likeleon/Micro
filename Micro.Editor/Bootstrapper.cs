@@ -2,7 +2,9 @@
 using System.ComponentModel.Composition.Hosting;
 using System.Windows;
 using AvalonDock;
+using Micro.Editor.Infrastructure.Behaviors;
 using Micro.Editor.Infrastructure.RegionAdapters;
+using Micro.Editor.Modules.AssetBrowser;
 using Microsoft.Practices.Prism.MefExtensions;
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.ServiceLocation;
@@ -36,6 +38,7 @@ namespace Micro.Editor
         {
             AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(Bootstrapper).Assembly));
             AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(DockingManagerRegionAdapter).Assembly));
+            AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(AssetBrowserModule).Assembly));
         }
 
         protected override Microsoft.Practices.Prism.Logging.ILoggerFacade CreateLogger()
@@ -53,6 +56,13 @@ namespace Micro.Editor
                 regionAdapterMappings.RegisterMapping(typeof(DockingManager), ServiceLocator.Current.GetInstance<DockingManagerRegionAdapter>());
             }
             return regionAdapterMappings;
+        }
+
+        protected override IRegionBehaviorFactory ConfigureDefaultRegionBehaviors()
+        {
+            var factory = base.ConfigureDefaultRegionBehaviors();
+            factory.AddIfMissing(AutoPopulateExportedViewsBehavior.BehaviorKey, typeof(AutoPopulateExportedViewsBehavior));
+            return factory;
         }
     }
 }
