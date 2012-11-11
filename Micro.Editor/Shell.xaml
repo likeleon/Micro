@@ -17,10 +17,9 @@
     <DockPanel>
         <Menu IsMainMenu="True" DockPanel.Dock="Top" Margin="0">
             <MenuItem Header="_FILE">
-                <MenuItem Header="E_xit" InputGestureText="Alt+F4" />
+                <MenuItem Header="E_xit" Command="{Binding ExitCommand}" InputGestureText="Alt+F4" />
             </MenuItem>
-            <MenuItem Header="_VIEW" />
-            <MenuItem Header="_PROJECT" />
+            <MenuItem Header="_VIEW" ItemsSource="{Binding ViewCommands}" ItemContainerStyle="{StaticResource MenuItemStyle}" />
             <MenuItem Header="_HELP" />
         </Menu>
         <StatusBar DockPanel.Dock="Bottom"

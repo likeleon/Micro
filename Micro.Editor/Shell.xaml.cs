@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
 using Elysium;
+using Micro.Editor.Infrastructure.ViewModels;
 
 namespace Micro.Editor
 {
@@ -16,6 +17,12 @@ namespace Micro.Editor
             InitializeComponent();
             Application.Current.Apply(Theme.Dark, AccentBrushes.Blue, Brushes.White);
             //Application.Current.Apply(Theme.Dark, GetRandomAccentBrush(), Brushes.White);
+        }
+
+        [Import]
+        ShellViewModel ViewModel
+        {
+            set { DataContext = value; }
         }
 
         //private SolidColorBrush GetRandomAccentBrush()

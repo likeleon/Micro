@@ -57,10 +57,13 @@
     <Compile Include="Behaviors\DockingManagerDocumentsSourceSyncBehavior.cs" />
     <Compile Include="Converters\ActiveDocumentConverter.cs" />
     <Compile Include="IViewRegionRegistration.cs" />
+    <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\RegionNames.cs" />
     <Compile Include="PanesStyleSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegionAdapters\DockingManagerRegionAdapter.cs" />
+    <Compile Include="Services\IMenuService.cs" />
+    <Compile Include="Services\MenuService.cs" />
     <Compile Include="ViewExportAttribute.cs" />
     <Compile Include="ViewModels\DocumentViewModel.cs" />
     <Compile Include="ViewModels\PaneViewModel.cs" />

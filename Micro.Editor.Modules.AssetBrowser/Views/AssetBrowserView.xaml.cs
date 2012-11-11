@@ -6,8 +6,8 @@ using Micro.Editor.Modules.AssetBrowser.ViewModels;
 
 namespace Micro.Editor.Modules.AssetBrowser.Views
 {
-    [ViewExport(RegionName = RegionNames.AvalonDocumentRegion)]
-    [PartCreationPolicy(CreationPolicy.NonShared)]
+    [Export(typeof(AssetBrowserView))]
+    [PartCreationPolicy(CreationPolicy.Shared)]
     public partial class AssetBrowserView : UserControl
     {
         public AssetBrowserView()

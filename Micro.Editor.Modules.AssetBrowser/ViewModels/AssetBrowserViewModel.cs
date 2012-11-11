@@ -5,7 +5,7 @@ using Micro.Editor.Infrastructure.ViewModels;
 namespace Micro.Editor.Modules.AssetBrowser.ViewModels
 {
     [Export(typeof(AssetBrowserViewModel))]
-    [PartCreationPolicy(CreationPolicy.NonShared)]
+    [PartCreationPolicy(CreationPolicy.Shared)]
     public class AssetBrowserViewModel : DocumentViewModel
     {
         public static readonly string AssetBrowserContentId = "Asset Browser";

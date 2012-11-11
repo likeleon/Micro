@@ -4,4 +4,8 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d">
+    <Style x:Key="MenuItemStyle" TargetType="{x:Type MenuItem}">
+        <Setter Property="Header" Value="{Binding Name}" />
+        <Setter Property="Command" Value="{Binding Command}" />
+    </Style>
 </ResourceDictionary>
