@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.Composition;
 using Caliburn.Micro;
+using Micro.Editor.Infrastructure.Controllers;
 using Micro.Editor.Infrastructure.ViewModels;
 
 namespace Micro.Editor.Modules.AssetBrowser.ViewModels
@@ -10,11 +11,17 @@ namespace Micro.Editor.Modules.AssetBrowser.ViewModels
     {
         public static readonly string AssetBrowserContentId = "Asset Browser";
 
+        [ImportingConstructor]
         public AssetBrowserViewModel()
             : base("Asset Browser", AssetBrowserContentId)
         {
         }
 
         public string TextContent { get; set; }
+
+        protected override bool OnCanClose()
+        {
+            return true;
+        }
     }
 }

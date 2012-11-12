@@ -18,13 +18,13 @@ namespace Micro.Editor
             this.ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
 
-        private static void RunInDebugMode()
+        private void RunInDebugMode()
         {
             Bootstrapper bootstrapper = new Bootstrapper();
             bootstrapper.Run();
         }
 
-        private static void RunInReleaseMode()
+        private void RunInReleaseMode()
         {
             AppDomain.CurrentDomain.UnhandledException += (o, e) => HandleException(e.ExceptionObject as Exception);
             try

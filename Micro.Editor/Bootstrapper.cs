@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Windows;
 using AvalonDock;
@@ -16,6 +18,9 @@ namespace Micro.Editor
     {
         private readonly EnterpriseLibraryLoggerAdapter logger = new EnterpriseLibraryLoggerAdapter();
 
+        [ImportMany("ApplicationResources", typeof(ResourceDictionary), AllowRecomposition = true)]
+        private IEnumerable<ResourceDictionary> ApplicationResources { get; set; }
+
         protected override System.Windows.DependencyObject CreateShell()
         {
             return Container.GetExportedValue<Shell>();
@@ -24,6 +29,12 @@ namespace Micro.Editor
         protected override void InitializeShell()
         {
             base.InitializeShell();
+
+            ApplicationResources = Container.GetExportedValues<ResourceDictionary>("ApplicationResources");
+            foreach (var resourceDictionary in ApplicationResources)
+            {
+                Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
+            }
 
             Application.Current.MainWindow = (Shell)Shell;
             Application.Current.MainWindow.Show();

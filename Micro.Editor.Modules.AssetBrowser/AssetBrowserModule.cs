@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.Composition;
+using Micro.Editor.Infrastructure.Controllers;
 using Micro.Editor.Infrastructure.Models;
 using Micro.Editor.Infrastructure.Services;
-using Micro.Editor.Modules.AssetBrowser.Views;
+using Micro.Editor.Modules.AssetBrowser.ViewModels;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.MefExtensions.Modularity;
 using Microsoft.Practices.Prism.Modularity;
-using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.ServiceLocation;
 
 namespace Micro.Editor.Modules.AssetBrowser
@@ -13,13 +13,13 @@ namespace Micro.Editor.Modules.AssetBrowser
     [ModuleExport(typeof(AssetBrowserModule))]
     public sealed class AssetBrowserModule : IModule
     {
-        private readonly IRegionManager regionManager;
+        private readonly IDocumentsController documentsController;
         private readonly IMenuService menuService;
 
         [ImportingConstructor]
-        public AssetBrowserModule(IRegionManager regionManager, IMenuService menuService)
+        public AssetBrowserModule(IDocumentsController documentsController, IMenuService menuService)
         {
-            this.regionManager = regionManager;
+            this.documentsController = documentsController;
             this.menuService = menuService;
         }
 
@@ -35,13 +35,8 @@ namespace Micro.Editor.Modules.AssetBrowser
 
         private void OnShowAssetBrowser()
         {
-            IRegion region = this.regionManager.Regions[RegionNames.AvalonDocumentRegion];
-            
-            var assetBrowserView = ServiceLocator.Current.GetInstance<AssetBrowserView>();
-            if (!region.Views.Contains(assetBrowserView))
-                region.Add(assetBrowserView);
-
-            region.Activate(assetBrowserView);
+            var assetBrowser = ServiceLocator.Current.GetInstance<AssetBrowserViewModel>();
+            this.documentsController.AddDocument(assetBrowser);
         }
     }
 }

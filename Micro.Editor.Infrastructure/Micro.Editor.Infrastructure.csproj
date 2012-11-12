@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="Behaviors\AutoPopulateExportedViewsBehavior.cs" />
     <Compile Include="Behaviors\DockingManagerDocumentsSourceSyncBehavior.cs" />
+    <Compile Include="Controllers\DocumentsController.cs" />
+    <Compile Include="Controllers\IDocumentsController.cs" />
     <Compile Include="Converters\ActiveDocumentConverter.cs" />
     <Compile Include="IViewRegionRegistration.cs" />
     <Compile Include="Models\MenuItem.cs" />

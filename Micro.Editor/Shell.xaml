@@ -44,11 +44,11 @@
                 <Infrastructure:PanesStyleSelector>
                     <Infrastructure:PanesStyleSelector.DocumentStyle>
                         <Style TargetType="{x:Type avalonDock:LayoutItem}">
-                            <Setter Property="Title" Value="{Binding Model.DataContext.Title}"/>
-                            <Setter Property="ToolTip" Value="{Binding Model.DataContext.ToolTip}"/>
-                            <Setter Property="CloseCommand" Value="{Binding Model.DataContext.CloseCommand}"/>
-                            <Setter Property="IconSource" Value="{Binding Model.DataContext.IconSource}"/>
-                            <Setter Property="ContentId" Value="{Binding Model.DataContext.ContentId}"/>
+                            <Setter Property="Title" Value="{Binding Model.Title}"/>
+                            <Setter Property="ToolTip" Value="{Binding Model.ToolTip}"/>
+                            <Setter Property="CloseCommand" Value="{Binding Model.CloseCommand}"/>
+                            <Setter Property="IconSource" Value="{Binding Model.IconSource}"/>
+                            <Setter Property="ContentId" Value="{Binding Model.ContentId}"/>
                         </Style>
                     </Infrastructure:PanesStyleSelector.DocumentStyle>
                 </Infrastructure:PanesStyleSelector>
