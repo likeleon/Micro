@@ -6,7 +6,6 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 using AvalonDock;
-using Caliburn.Micro;
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.Prism.Regions.Behaviors;
 
@@ -18,7 +17,7 @@ namespace Micro.Editor.Infrastructure.Behaviors
     {
         public static readonly string BehaviorKey = "DockingManagerDocumentsSourceSyncBehavior";
         private DockingManager dockingManager;
-        private BindableCollection<object> documents = new BindableCollection<object>();
+        private ObservableCollection<object> documents = new ObservableCollection<object>();
         private ReadOnlyObservableCollection<object> readonlyDocuments;
         private bool updatingActiveViewsInManagerActiveContentChanged;
 

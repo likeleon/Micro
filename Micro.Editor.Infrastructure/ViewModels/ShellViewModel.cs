@@ -2,17 +2,17 @@
 using System.ComponentModel.Composition;
 using System.Windows;
 using System.Windows.Input;
-using Caliburn.Micro;
 using Micro.Editor.Infrastructure.Models;
 using Microsoft.Practices.Prism.Commands;
+using Microsoft.Practices.Prism.ViewModel;
 
 namespace Micro.Editor.Infrastructure.ViewModels
 {
     [Export]
-    public sealed class ShellViewModel : PropertyChangedBase
+    public sealed class ShellViewModel : NotificationObject
     {
         private DelegateCommand exitCommand;
-        private BindableCollection<MenuItem> viewCommands = new BindableCollection<MenuItem>();
+        private ObservableCollection<MenuItem> viewCommands = new ObservableCollection<MenuItem>();
         private ReadOnlyObservableCollection<MenuItem> readonlyViewCommands;
         
         public ICommand ExitCommand

@@ -34,9 +34,6 @@
     <Reference Include="AvalonDock">
       <HintPath>..\Externals\AvalonDock\AvalonDock.dll</HintPath>
     </Reference>
-    <Reference Include="Caliburn.Micro">
-      <HintPath>..\Externals\Caliburn.Micro\Caliburn.Micro.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Practices.Prism">
       <HintPath>..\Externals\Prism4\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>

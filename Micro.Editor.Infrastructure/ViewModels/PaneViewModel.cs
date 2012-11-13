@@ -1,9 +1,9 @@
 ﻿using System;
-using Caliburn.Micro;
+using Microsoft.Practices.Prism.ViewModel;
 
 namespace Micro.Editor.Infrastructure.ViewModels
 {
-    public abstract class PaneViewModel : PropertyChangedBase
+    public abstract class PaneViewModel : NotificationObject
     {
         private string title;
         private string contentId;
@@ -17,7 +17,7 @@ namespace Micro.Editor.Infrastructure.ViewModels
                 if (this.title != value)
                 {
                     this.title = value;
-                    NotifyOfPropertyChange(() => Title);
+                    RaisePropertyChanged(() => Title);
                 }
             }
         }
@@ -35,7 +35,7 @@ namespace Micro.Editor.Infrastructure.ViewModels
                 if (this.contentId != value)
                 {
                     this.contentId = value;
-                    NotifyOfPropertyChange(() => ContentId);
+                    RaisePropertyChanged(() => ContentId);
                 }
             }
         }
@@ -48,7 +48,7 @@ namespace Micro.Editor.Infrastructure.ViewModels
                 if (this.toolTip != value)
                 {
                     this.toolTip = value;
-                    NotifyOfPropertyChange(() => ToolTip);
+                    RaisePropertyChanged(() => ToolTip);
                 }
             }
         }

@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.Composition;
-using Caliburn.Micro;
 using Micro.Editor.Infrastructure.Controllers;
 using Micro.Editor.Infrastructure.ViewModels;
 
