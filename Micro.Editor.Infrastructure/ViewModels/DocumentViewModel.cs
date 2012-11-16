@@ -4,7 +4,7 @@ using Microsoft.Practices.Prism.Commands;
 
 namespace Micro.Editor.Infrastructure.ViewModels
 {
-    public abstract class DocumentViewModel : PaneViewModel
+    public abstract class DocumentViewModel : PaneViewModel, IDocumentViewModel
     {
         public event EventHandler CloseRequested = delegate { };
 

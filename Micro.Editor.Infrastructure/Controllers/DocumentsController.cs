@@ -19,7 +19,7 @@ namespace Micro.Editor.Infrastructure.Controllers
         }
 
         #region Implements IDocumentsController
-        public void AddDocument(DocumentViewModel doc)
+        public void AddDocument(IDocumentViewModel doc)
         {
             IRegion region = this.regionManager.Regions[RegionNames.AvalonDocumentRegion];
 
@@ -32,7 +32,7 @@ namespace Micro.Editor.Infrastructure.Controllers
             region.Activate(doc);
         }
 
-        public void RemoveDocument(DocumentViewModel doc)
+        public void RemoveDocument(IDocumentViewModel doc)
         {
             IRegion region = this.regionManager.Regions[RegionNames.AvalonDocumentRegion];
 
@@ -51,7 +51,7 @@ namespace Micro.Editor.Infrastructure.Controllers
 
         private void doc_CloseRequested(object sender, EventArgs e)
         {
-            RemoveDocument(sender as DocumentViewModel);
+            RemoveDocument(sender as IDocumentViewModel);
         }
     }
 }

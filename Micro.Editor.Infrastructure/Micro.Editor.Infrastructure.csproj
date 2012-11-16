@@ -65,6 +65,7 @@
     <Compile Include="Services\MenuService.cs" />
     <Compile Include="ViewExportAttribute.cs" />
     <Compile Include="ViewModels\DocumentViewModel.cs" />
+    <Compile Include="ViewModels\IDocumentViewModel.cs" />
     <Compile Include="ViewModels\PaneViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
   </ItemGroup>

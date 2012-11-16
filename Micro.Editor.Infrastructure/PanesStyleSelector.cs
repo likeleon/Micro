@@ -10,7 +10,7 @@ namespace Micro.Editor.Infrastructure
 
         public override Style SelectStyle(object item, DependencyObject container)
         {
-            if (item is DocumentViewModel)
+            if (item is IDocumentViewModel)
                 return DocumentStyle;
 
             return base.SelectStyle(item, container);

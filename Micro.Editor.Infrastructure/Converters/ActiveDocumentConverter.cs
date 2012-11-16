@@ -8,7 +8,7 @@ namespace Micro.Editor.Infrastructure.Converters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value is DocumentViewModel)
+            if (value is IDocumentViewModel)
                 return value;
 
             return Binding.DoNothing;
@@ -16,7 +16,7 @@ namespace Micro.Editor.Infrastructure.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value is DocumentViewModel)
+            if (value is IDocumentViewModel)
                 return value;
 
             return Binding.DoNothing;

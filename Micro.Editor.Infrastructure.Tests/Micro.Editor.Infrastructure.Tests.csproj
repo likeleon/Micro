@@ -44,6 +44,10 @@
     <Reference Include="Microsoft.Practices.Prism.MefExtensions">
       <HintPath>..\Externals\Prism4\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Moq">
+      <HintPath>..\Externals\Moq\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core">
@@ -64,6 +68,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Behaviors\AutoPopulateExportedViewsBehaviorTest.cs" />
+    <Compile Include="Controllers\DocumentsControllerTest.cs" />
+    <Compile Include="Mocks\MockRegionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

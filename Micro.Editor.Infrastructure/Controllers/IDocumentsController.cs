@@ -4,7 +4,7 @@ namespace Micro.Editor.Infrastructure.Controllers
 {
     public interface IDocumentsController
     {
-        void AddDocument(DocumentViewModel doc);
-        void RemoveDocument(DocumentViewModel doc);
+        void AddDocument(IDocumentViewModel doc);
+        void RemoveDocument(IDocumentViewModel doc);
     }
 }
