@@ -8,7 +8,6 @@
         xmlns:Infrastructure="clr-namespace:Micro.Editor.Infrastructure;assembly=Micro.Editor.Infrastructure"
         xmlns:Models="clr-namespace:Micro.Editor.Infrastructure.Models;assembly=Micro.Editor.Infrastructure"
         xmlns:Converters="clr-namespace:Micro.Editor.Infrastructure.Converters;assembly=Micro.Editor.Infrastructure"
-        Background="{DynamicResource BackgroundBrush}"
         WindowStartupLocation="CenterScreen"
         Title="Micro Editor">
     <metro:Window.Resources>
@@ -31,7 +30,8 @@
             </StatusBarItem>
         </StatusBar>
         <avalonDock:DockingManager prism:RegionManager.RegionName="{x:Static Models:RegionNames.AvalonDocumentRegion}"
-                                   Background="{DynamicResource BackgroundBrush}">
+                                   Background="{DynamicResource BackgroundBrush}"
+                                   DocumentPaneControlStyle="{StaticResource LayoutDocumentPaneControlStyle}">
             <avalonDock:DockingManager.Theme>
                 <avalonDock:ExpressionDarkTheme />
             </avalonDock:DockingManager.Theme>
