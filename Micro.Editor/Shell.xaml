@@ -47,7 +47,7 @@
                             <Setter Property="Title" Value="{Binding Model.Title}"/>
                             <Setter Property="ToolTip" Value="{Binding Model.ToolTip}"/>
                             <Setter Property="CloseCommand" Value="{Binding Model.CloseCommand}"/>
-                            <Setter Property="IconSource" Value="{Binding Model.IconSource}"/>
+                            <!--<Setter Property="IconSource" Value="{Binding Model.IconSource}"/>-->
                             <Setter Property="ContentId" Value="{Binding Model.ContentId}"/>
                         </Style>
                     </Infrastructure:PanesStyleSelector.DocumentStyle>

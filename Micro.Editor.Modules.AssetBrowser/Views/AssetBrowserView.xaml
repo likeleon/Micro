@@ -7,6 +7,6 @@
              d:DesignHeight="300" d:DesignWidth="300"
              Foreground="{DynamicResource ForegroundBrush}">
     <Grid>
-        <TextBlock Text="Hello, World" />
+        <TextBlock Text="{Binding Title}" />
     </Grid>
 </UserControl>
