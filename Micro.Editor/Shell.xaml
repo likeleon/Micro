@@ -14,7 +14,8 @@
         <Converters:ActiveDocumentConverter x:Key="ActiveDocumentConverter"/>
     </metro:Window.Resources>
     <DockPanel>
-        <Menu IsMainMenu="True" DockPanel.Dock="Top" Margin="0">
+        <Menu IsMainMenu="True" DockPanel.Dock="Top" Margin="0"
+              Foreground="{DynamicResource PlainTextForeground}">
             <MenuItem Header="_FILE">
                 <MenuItem Header="E_xit" Command="{Binding ExitCommand}" InputGestureText="Alt+F4" />
             </MenuItem>
@@ -23,7 +24,7 @@
         </Menu>
         <StatusBar DockPanel.Dock="Bottom"
                    Background="{DynamicResource AccentBrush}"
-                   Foreground="{DynamicResource ForegroundBrush}"
+                   Foreground="{DynamicResource PlainTextForeground}"
                    Padding="1">
             <StatusBarItem>
                 <TextBlock Text="Ready" />

@@ -1,6 +1,8 @@
-﻿using System.ComponentModel.Composition;
-using Micro.Editor.Infrastructure.Controllers;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel.Composition;
+using Micro.Editor.Infrastructure.Services;
 using Micro.Editor.Infrastructure.ViewModels;
+using Micro.Editor.Modules.AssetBrowser.Models;
 
 namespace Micro.Editor.Modules.AssetBrowser.ViewModels
 {
@@ -10,13 +12,20 @@ namespace Micro.Editor.Modules.AssetBrowser.ViewModels
     {
         public static readonly string AssetBrowserContentId = "Asset Browser";
 
-        [ImportingConstructor]
-        public AssetBrowserViewModel()
-            : base("Asset Browser", AssetBrowserContentId)
+        private ObservableCollection<AssetFolder> assetGroups = new ObservableCollection<AssetFolder>();
+        private ReadOnlyObservableCollection<AssetFolder> readonlyAssetGroups;
+
+        public ReadOnlyObservableCollection<AssetFolder> AssetGroups
         {
+            get { return this.readonlyAssetGroups ?? (this.readonlyAssetGroups = new ReadOnlyObservableCollection<AssetFolder>(this.assetGroups)); }
         }
 
-        public string TextContent { get; set; }
+        [ImportingConstructor]
+        public AssetBrowserViewModel(IFileService fileService)
+            : base("Asset Browser", AssetBrowserContentId)
+        {
+            this.assetGroups.Add(new AssetFolder(fileService, @"C:\Toy\Micro\Micro.Editor"));
+        }
 
         protected override bool OnCanClose()
         {

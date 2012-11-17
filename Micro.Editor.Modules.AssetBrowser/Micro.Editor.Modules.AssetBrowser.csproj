@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssetBrowserModule.cs" />
+    <Compile Include="Models\AssetFolder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\ApplicationResources.xaml.cs">
       <DependentUpon>ApplicationResources.xaml</DependentUpon>
@@ -81,7 +82,10 @@
       <Name>Micro.Editor.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Folder_Closed.ico" />
+    <Resource Include="Resources\Folder_Opened.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

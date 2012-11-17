@@ -8,13 +8,52 @@
 	mc:Ignorable="d">
 
     <avalonDockConverters:ActivateCommandLayoutItemFromLayoutModelConverter x:Key="ActivateCommandLayoutItemFromLayoutModelConverter"/>
+    
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="PlainTextForeground" Color="#FFF1F1F1" />
+    <SolidColorBrush x:Key="DefaultBackground" Color="#FF252526" />
+    <SolidColorBrush x:Key="DefaultBorderBrush" Color="#FF252526" />
+    
+    <!-- Image -->
+    <Style x:Key="SmallIconStyle" TargetType="{x:Type Image}">
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Height" Value="16" />
+    </Style>
 
+    <!-- MenuItem -->
     <Style x:Key="MenuItemStyle" TargetType="{x:Type MenuItem}">
         <Setter Property="Header" Value="{Binding Name}" />
         <Setter Property="Command" Value="{Binding Command}" />
     </Style>
+    
+    <!-- TreeView -->
+    <Style TargetType="{x:Type TreeView}">
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PlainTextForeground}" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
 
-    <Style x:Key="AvalonDock_Expression_ToolButtonStyle" TargetType="ToggleButton">
+    <!-- TreeViewItem -->
+    <Style TargetType="{x:Type TreeViewItem}">
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PlainTextForeground}" />
+    </Style>
+
+    <!-- GridSplitter -->
+    <Style TargetType="{x:Type GridSplitter}">
+        <Setter Property="Background" Value="{DynamicResource DefaultBackground}" />
+    </Style>
+    
+    <Style x:Key="HorzGridSplitter"
+           TargetType="{x:Type GridSplitter}"
+           BasedOn="{StaticResource {x:Type GridSplitter}}">
+        <Setter Property="Width" Value="3" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+    </Style>
+
+    <!-- AvalonDock -->
+    <Style x:Key="AvalonDock_ToolButtonStyle" TargetType="ToggleButton">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
@@ -55,7 +94,7 @@
                             <avalonDockControls:DocumentPaneTabPanel x:Name="HeaderPanel" Grid.Column="0" IsItemsHost="true" Grid.Row="0" KeyboardNavigation.TabIndex="1"/>
                             <avalonDockControls:DropDownButton
                                 x:Name="MenuDropDownButton"
-                                Style="{StaticResource AvalonDock_Expression_ToolButtonStyle}"
+                                Style="{StaticResource AvalonDock_ToolButtonStyle}"
                                 Focusable="False"
                                 VerticalAlignment="Center"
                                 Grid.Column="1">
@@ -87,12 +126,9 @@
                                 KeyboardNavigation.DirectionalNavigation="Contained"
                                 Grid.Row="2" 
                                 KeyboardNavigation.TabIndex="2" 
-                                KeyboardNavigation.TabNavigation="Cycle"
-                                CornerRadius="3"
-                                Padding="0,1,0,2">
+                                KeyboardNavigation.TabNavigation="Cycle">
                             <ContentPresenter x:Name="PART_SelectedContentHost" 
                                               ContentSource="SelectedContent" 
-                                              Margin="0,2,0,2"
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                     </Grid>
@@ -125,11 +161,10 @@
             <Setter.Value>
                 <Style TargetType="{x:Type TabItem}">
                     <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource PlainTextForeground}"/>
                     <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
                     <Setter Property="ToolTip" Value="{Binding ToolTip}"/>
                     <Setter Property="Padding" Value="5,1"/>
-                    <Setter Property="BorderBrush" Value="Red" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type TabItem}">
@@ -154,7 +189,7 @@
                                     <Trigger Property="IsEnabled" Value="false">
                                         <Setter Property="BorderBrush" Value="Transparent"/>
                                         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-                                        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+                                        <Setter Property="Foreground" Value="{DynamicResource PlainTextForeground}"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -179,4 +214,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 </ResourceDictionary>

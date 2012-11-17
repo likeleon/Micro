@@ -40,7 +40,6 @@ namespace Micro.Editor.Infrastructure.Tests.Controllers
             try
             {
                 var mockDocumentViewModel = new MockDocumentViewModel();
-                var mockServiceLocator = new Mock<ServiceLocatorImplBase>();
                 var controller = new DocumentsController(this.regionManager);
 
                 controller.AddDocument(mockDocumentViewModel);

@@ -61,6 +61,8 @@
     <Compile Include="PanesStyleSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegionAdapters\DockingManagerRegionAdapter.cs" />
+    <Compile Include="Services\FileService.cs" />
+    <Compile Include="Services\IFileService.cs" />
     <Compile Include="Services\IMenuService.cs" />
     <Compile Include="Services\MenuService.cs" />
     <Compile Include="ViewExportAttribute.cs" />

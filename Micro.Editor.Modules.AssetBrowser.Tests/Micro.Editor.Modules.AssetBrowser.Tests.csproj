@@ -42,6 +42,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Externals\Prism4\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\Externals\Moq\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -60,10 +63,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Models\AssetFolderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AssetBrowserViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Micro.Editor.Infrastructure.Tests\Micro.Editor.Infrastructure.Tests.csproj">
+      <Project>{b2d6fb32-1cb6-4bb0-9bce-d37491c22aa6}</Project>
+      <Name>Micro.Editor.Infrastructure.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Micro.Editor.Infrastructure\Micro.Editor.Infrastructure.csproj">
       <Project>{274d9fcf-4a83-4cac-b9d9-3a34bf955905}</Project>
       <Name>Micro.Editor.Infrastructure</Name>
@@ -73,6 +81,7 @@
       <Name>Micro.Editor.Modules.AssetBrowser</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

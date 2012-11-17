@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="Behaviors\AutoPopulateExportedViewsBehaviorTest.cs" />
     <Compile Include="Controllers\DocumentsControllerTest.cs" />
+    <Compile Include="Mocks\MockFileService.cs" />
     <Compile Include="Mocks\MockRegionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
