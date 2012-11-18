@@ -38,6 +38,13 @@
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource PlainTextForeground}" />
     </Style>
+    
+    <!-- ListView -->
+    <Style TargetType="{x:Type ListView}">
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PlainTextForeground}" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
 
     <!-- GridSplitter -->
     <Style TargetType="{x:Type GridSplitter}">

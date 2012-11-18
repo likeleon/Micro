@@ -3,32 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:Models="clr-namespace:Micro.Editor.Modules.AssetBrowser.Models"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Foreground="{DynamicResource PlainTextForeground}">
     <UserControl.Resources>
-        <HierarchicalDataTemplate ItemsSource="{Binding ChildAssetFolders}"
-                                  DataType="{x:Type Models:AssetFolder}">
-            <StackPanel Orientation="Horizontal" Margin="2" >
-                <Image x:Name="folderIcon"
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Micro.Editor.Infrastructure;component/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <HierarchicalDataTemplate ItemsSource="{Binding ChildAssetFolders}"
+                                      DataType="{x:Type Models:AssetFolder}">
+                <StackPanel Orientation="Horizontal" Margin="2" >
+                    <Image x:Name="folderIcon"
                        Style="{StaticResource SmallIconStyle}" 
-                       Source="../Resources/Folder_Closed.ico" />
-                <TextBlock Text="{Binding Name}" Margin="2,0" />
-            </StackPanel>
-            <HierarchicalDataTemplate.Triggers>
-                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TreeViewItem}, Path=IsExpanded}" Value="True">
-                    <Setter TargetName="folderIcon" Property="Source" Value="../Resources/Folder_Opened.png" />
-                </DataTrigger>
-            </HierarchicalDataTemplate.Triggers>
-        </HierarchicalDataTemplate>
+                       Source="../Resources/Folder_Closed.png" />
+                    <TextBlock Text="{Binding Name}" Margin="4,0" />
+                </StackPanel>
+                <HierarchicalDataTemplate.Triggers>
+                    <DataTrigger Binding="{Binding IsExpanded}" Value="True">
+                        <Setter TargetName="folderIcon" Property="Source" Value="../Resources/Folder_Open.png" />
+                    </DataTrigger>
+                </HierarchicalDataTemplate.Triggers>
+            </HierarchicalDataTemplate>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TreeView ItemsSource="{Binding AssetGroups}" />
+        <TreeView ItemsSource="{Binding AssetGroups}">
+            <TreeView.Resources>
+                <Style TargetType="{x:Type TreeViewItem}"
+                       BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                </Style>
+            </TreeView.Resources>
+        </TreeView>
         <GridSplitter Style="{StaticResource HorzGridSplitter}" />
+        <ListView Grid.Column="1" 
+                  ItemsSource="{Binding SelectedAssetFolder.AssetFiles}" />
     </Grid>
 </UserControl>

@@ -19,6 +19,7 @@ namespace Micro.Editor.Modules.AssetBrowser.Tests.Models
             mockFileService.AddFolder(path + "/SubFolder2/SubSubFolder");
 
             var folder = new AssetFolder(mockFileService, path);
+            Assert.IsFalse(folder.IsExpanded);
 
             Assert.AreEqual(mockFileService.GetFullPath(path), folder.FullPath);
             Assert.AreEqual("AssetFolder", folder.Name);

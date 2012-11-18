@@ -20,6 +20,8 @@ namespace Micro.Editor.Modules.AssetBrowser.ViewModels
             get { return this.readonlyAssetGroups ?? (this.readonlyAssetGroups = new ReadOnlyObservableCollection<AssetFolder>(this.assetGroups)); }
         }
 
+        public AssetFolder SelectedAssetFolder { get; set; }
+
         [ImportingConstructor]
         public AssetBrowserViewModel(IFileService fileService)
             : base("Asset Browser", AssetBrowserContentId)
