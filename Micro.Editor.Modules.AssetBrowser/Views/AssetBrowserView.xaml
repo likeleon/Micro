@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:Models="clr-namespace:Micro.Editor.Modules.AssetBrowser.Models"
+             xmlns:InfraBehaviors="clr-namespace:Micro.Editor.Infrastructure.Behaviors;assembly=Micro.Editor.Infrastructure"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Foreground="{DynamicResource PlainTextForeground}">
@@ -35,6 +36,9 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TreeView ItemsSource="{Binding AssetGroups}">
+            <i:Interaction.Behaviors>
+                <InfraBehaviors:BindableTreeViewSelectedItemBehavior SelectedItem="{Binding SelectedAssetFolder}" />
+            </i:Interaction.Behaviors>
             <TreeView.Resources>
                 <Style TargetType="{x:Type TreeViewItem}"
                        BasedOn="{StaticResource {x:Type TreeViewItem}}">
@@ -45,6 +49,6 @@
         </TreeView>
         <GridSplitter Style="{StaticResource HorzGridSplitter}" />
         <ListView Grid.Column="1" 
-                  ItemsSource="{Binding SelectedAssetFolder.AssetFiles}" />
+                  ItemsSource="{Binding FilteredFiles}" />
     </Grid>
 </UserControl>

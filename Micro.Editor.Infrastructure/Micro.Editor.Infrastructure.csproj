@@ -43,14 +43,16 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Windows.Interactivity">
-      <HintPath>..\Externals\Caliburn.Micro\System.Windows.Interactivity.dll</HintPath>
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Externals\Blend\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Behaviors\AutoPopulateExportedViewsBehavior.cs" />
+    <Compile Include="Behaviors\BindableTreeViewSelectedItemBehavior.cs" />
     <Compile Include="Behaviors\DockingManagerDocumentsSourceSyncBehavior.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
     <Compile Include="Controllers\IDocumentsController.cs" />

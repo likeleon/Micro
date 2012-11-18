@@ -10,11 +10,17 @@ namespace Micro.Editor.Infrastructure.Tests.Mocks
     {
         private static readonly char folderSeparator = '\\';
         private readonly string workingDirectory = Directory.GetCurrentDirectory();
-        private readonly List<string> paths = new List<string>();
+        private readonly List<string> folders = new List<string>();
+        private readonly List<string> files = new List<string>();
 
-        public void AddFolder(string path)
+        public void AddFolder(string folderPath)
         {
-            this.paths.Add(GetFullPath(path));
+            this.folders.Add(GetFullPath(folderPath));
+        }
+
+        public void AddFile(string filePath)
+        {
+            this.files.Add(GetFullPath(filePath));
         }
 
         #region IFileService
@@ -31,8 +37,17 @@ namespace Micro.Editor.Infrastructure.Tests.Mocks
         public string[] GetDirectories(string path)
         {
             string rootPath = GetFullPath(path);
-            var result = this.paths.Where(p => !p.Equals(rootPath, StringComparison.CurrentCultureIgnoreCase))
+            var result = this.folders.Where(p => !p.Equals(rootPath, StringComparison.CurrentCultureIgnoreCase))
                                    .Where(p => p.StartsWith(rootPath, StringComparison.CurrentCultureIgnoreCase))
+                                   .Where(p => p.Replace(rootPath, string.Empty).LastIndexOf(folderSeparator) <= 0)
+                                   .ToArray();
+            return result;
+        }
+
+        public string[] GetFiles(string path)
+        {
+            string rootPath = GetFullPath(path);
+            var result = this.files.Where(p => p.StartsWith(rootPath, StringComparison.CurrentCultureIgnoreCase))
                                    .Where(p => p.Replace(rootPath, string.Empty).LastIndexOf(folderSeparator) <= 0)
                                    .ToArray();
             return result;

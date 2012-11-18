@@ -22,6 +22,11 @@ namespace Micro.Editor.Infrastructure.Services
         {
             return Directory.GetDirectories(path);
         }
+
+        public string[] GetFiles(string path)
+        {
+            return Directory.GetFiles(path);
+        }
         #endregion
     }
 }
