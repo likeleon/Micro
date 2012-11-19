@@ -43,6 +43,7 @@ namespace Micro.Editor
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
+            Container.ComposeExportedValue<CompositionContainer>(Container);
         }
 
         protected override void ConfigureAggregateCatalog()

@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using Micro.Core;
 
-namespace Micro.GameplayFoundation.Tests
+namespace Micro.GameplayFoundation
 {
     public sealed class AssetManager
     {
@@ -118,7 +118,11 @@ namespace Micro.GameplayFoundation.Tests
                 Log.WarnFormat("LoadAsset with group name {0} and asset {1} failed, empty full path returned", groupName, assetPath);
                 return null;
             }
+            return LoadAsset(fullPath);
+        }
 
+        public IAsset LoadAsset(string fullPath)
+        {
             if (this.assets.ContainsKey(fullPath))
                 return this.assets[fullPath];
 
@@ -126,13 +130,13 @@ namespace Micro.GameplayFoundation.Tests
             var factory = AssetFactories.Find(f => f.FileExtensions.Contains(fileExtension, StringComparer.CurrentCultureIgnoreCase));
             if (factory == null)
             {
-                Log.WarnFormat("LoadAsset with group name {0} and asset {1} failed, unknown file extension {2}", groupName, assetPath, fileExtension);
+                Log.WarnFormat("LoadAsset {0} failed, unknown file extension {1}", fullPath, fileExtension);
                 return null;
             }
 
             if (!File.Exists(fullPath))
             {
-                Log.WarnFormat("LoadAsset with group name {0} and asset {1} failed, file {2} not exists", groupName, assetPath, fullPath);
+                Log.WarnFormat("LoadAsset {0} failed, file not exists", fullPath, fullPath);
                 return null;
             }
 

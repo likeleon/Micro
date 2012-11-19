@@ -73,7 +73,12 @@
     <Compile Include="ViewModels\PaneViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Micro.GameplayFoundation\Micro.GameplayFoundation.csproj">
+      <Project>{7f8aabbf-2beb-415e-b62b-82af7546a821}</Project>
+      <Name>Micro.GameplayFoundation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Resources\Styles.xaml">
       <SubType>Designer</SubType>

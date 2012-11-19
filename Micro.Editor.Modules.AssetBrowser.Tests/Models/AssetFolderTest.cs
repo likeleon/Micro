@@ -22,11 +22,11 @@ namespace Micro.Editor.Modules.AssetBrowser.Tests.Models
             mockFileService.AddFile(path + "/SubFolder2/File2A");
             mockFileService.AddFolder(path + "/SubFolder2/SubSubFolder");
 
-            var folder = new AssetFolder(mockFileService, path);
+            var folder = new AssetFolder(mockFileService, "AssetFolder Name", path);
             Assert.IsFalse(folder.IsExpanded);
 
             Assert.AreEqual(mockFileService.GetFullPath(path), folder.FullPath);
-            Assert.AreEqual("AssetFolder", folder.Name);
+            Assert.AreEqual("AssetFolder Name", folder.Name);
             Assert.AreEqual(2, folder.ChildAssetFolders.Count);
             Assert.AreEqual(0, folder.Files.Count);
 

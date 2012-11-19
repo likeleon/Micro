@@ -28,6 +28,9 @@
                     </DataTrigger>
                 </HierarchicalDataTemplate.Triggers>
             </HierarchicalDataTemplate>
+            <DataTemplate DataType="{x:Type Models:AssetFile}">
+                <TextBlock Text="{Binding Asset.Name}" ToolTip="{Binding Asset.FullPath}" />
+            </DataTemplate>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -49,6 +52,6 @@
         </TreeView>
         <GridSplitter Style="{StaticResource HorzGridSplitter}" />
         <ListView Grid.Column="1" 
-                  ItemsSource="{Binding FilteredFiles}" />
+                  ItemsSource="{Binding FilteredAssetFiles}" />
     </Grid>
 </UserControl>

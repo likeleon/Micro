@@ -4,7 +4,7 @@ using Micro.Editor.Infrastructure.Services;
 
 namespace Micro.Editor.Modules.AssetBrowser.Models
 {
-    public sealed class AssetFolder
+    public class AssetFolder
     {
         public string Name { get; private set; }
         public string FullPath { get; private set; }
@@ -13,13 +13,13 @@ namespace Micro.Editor.Modules.AssetBrowser.Models
         public bool IsSelected { get; set; }
         public List<string> Files { get; private set; }
 
-        public AssetFolder(IFileService fileService, string path)
+        public AssetFolder(IFileService fileService, string name, string path)
         {
+            Name = name;
             FullPath = fileService.GetFullPath(path);
-            Name = fileService.GetFileName(path);
 
             ChildAssetFolders = fileService.GetDirectories(FullPath)
-                .Select(d => new AssetFolder(fileService, d))
+                .Select(d => new AssetFolder(fileService, fileService.GetFileName(d), d))
                 .ToList();
 
             Files = fileService.GetFiles(FullPath).ToList();

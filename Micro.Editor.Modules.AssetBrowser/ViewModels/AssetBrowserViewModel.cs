@@ -5,6 +5,7 @@ using System.ComponentModel.Composition;
 using Micro.Editor.Infrastructure.Services;
 using Micro.Editor.Infrastructure.ViewModels;
 using Micro.Editor.Modules.AssetBrowser.Models;
+using Micro.GameplayFoundation;
 
 namespace Micro.Editor.Modules.AssetBrowser.ViewModels
 {
@@ -12,12 +13,25 @@ namespace Micro.Editor.Modules.AssetBrowser.ViewModels
     [PartCreationPolicy(CreationPolicy.Shared)]
     public class AssetBrowserViewModel : DocumentViewModel
     {
+        #region UnknownAsset
+        public sealed class UnknownAsset : IAsset
+        {
+            public string Name { get; set; }
+            public string FullPath { get; set; }
+        }
+        #endregion
+
+        #region Fields
         public static readonly string AssetBrowserContentId = "Asset Browser";
 
         private ObservableCollection<AssetFolder> assetGroups = new ObservableCollection<AssetFolder>();
         private ReadOnlyObservableCollection<AssetFolder> readonlyAssetGroups;
         private AssetFolder selectedAssetFolder;
+        private readonly AssetManager assetManager;
+        private readonly IFileService fileService;
+        #endregion
 
+        #region Properties
         public ReadOnlyObservableCollection<AssetFolder> AssetGroups
         {
             get { return this.readonlyAssetGroups ?? (this.readonlyAssetGroups = new ReadOnlyObservableCollection<AssetFolder>(this.assetGroups)); }
@@ -31,21 +45,35 @@ namespace Micro.Editor.Modules.AssetBrowser.ViewModels
                 if (this.selectedAssetFolder != value)
                 {
                     this.selectedAssetFolder = value;
-                    RaisePropertyChanged(() => FilteredFiles);
+                    RaisePropertyChanged(() => FilteredAssetFiles);
                 }
             }
         }
 
-        public IEnumerable<string> FilteredFiles
+        public IEnumerable<AssetFile> FilteredAssetFiles
         {
             get
             {
-                List<string> files = new List<string>();
+                List<AssetFile> assetFiles = new List<AssetFile>();
 
-                Action<AssetFolder, List<string>> addFilesAction = null;
+                Action<AssetFolder, List<AssetFile>> addFilesAction = null;
                 addFilesAction = (folder, resultFiles) =>
                 {
-                    resultFiles.AddRange(folder.Files);
+                    foreach (string file in folder.Files)
+                    {
+                        var asset = this.assetManager.LoadAsset(file);
+                        if (asset == null)
+                        {
+                            asset = new UnknownAsset()
+                            {
+                                Name = this.fileService.GetFileName(file),
+                                FullPath = file
+                            };
+                        }
+
+                        resultFiles.Add(new AssetFile(asset));
+                    }
+                    
                     foreach (var childFolder in folder.ChildAssetFolders)
                     {
                         addFilesAction(childFolder, resultFiles);
@@ -54,21 +82,33 @@ namespace Micro.Editor.Modules.AssetBrowser.ViewModels
 
                 if (SelectedAssetFolder != null)
                 {
-                    addFilesAction(SelectedAssetFolder, files);
+                    addFilesAction(SelectedAssetFolder, assetFiles);
                 }
 
-                return files;
+                return assetFiles;
             }
         }
+        #endregion
 
         [ImportingConstructor]
-        public AssetBrowserViewModel(IFileService fileService)
+        public AssetBrowserViewModel(IFileService fileService, [Import("AssetManager")]AssetManager assetManager)
             : base("Asset Browser", AssetBrowserContentId)
         {
-            this.assetGroups.Add(new AssetFolder(fileService, @"C:\Toy\Micro\Micro.Editor"));
-            this.assetGroups[0].IsExpanded = true;
-            this.assetGroups[0].IsSelected = true;
-            SelectedAssetFolder = this.assetGroups[0];
+            this.fileService = fileService;
+            this.assetManager = assetManager;
+
+            foreach (var assetGroup in assetManager.Groups)
+            {
+                var groupFolder = new AssetFolder(fileService, assetGroup.Value.Name, assetGroup.Value.RootPath);
+                this.assetGroups.Add(groupFolder);
+            }
+
+            if (this.assetGroups.Count > 0)
+            {
+                this.assetGroups[0].IsExpanded = true;
+                this.assetGroups[0].IsSelected = true;
+                SelectedAssetFolder = this.assetGroups[0];
+            }
         }
 
         protected override bool OnCanClose()
