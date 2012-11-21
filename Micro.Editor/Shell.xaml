@@ -14,8 +14,8 @@
         <Converters:ActiveDocumentConverter x:Key="ActiveDocumentConverter"/>
     </metro:Window.Resources>
     <DockPanel>
-        <Menu IsMainMenu="True" DockPanel.Dock="Top" Margin="0"
-              Foreground="{DynamicResource PlainTextForeground}">
+        <Menu IsMainMenu="True" DockPanel.Dock="Top" Margin="0" FontSize="12"
+              Foreground="{DynamicResource ForegroundBrush}">
             <MenuItem Header="_FILE">
                 <MenuItem Header="E_xit" Command="{Binding ExitCommand}" InputGestureText="Alt+F4" />
             </MenuItem>
@@ -24,7 +24,7 @@
         </Menu>
         <StatusBar DockPanel.Dock="Bottom"
                    Background="{DynamicResource AccentBrush}"
-                   Foreground="{DynamicResource PlainTextForeground}"
+                   Foreground="{DynamicResource ContrastBrush}"
                    Padding="1">
             <StatusBarItem>
                 <TextBlock Text="Ready" />
@@ -34,7 +34,7 @@
                                    Background="{DynamicResource BackgroundBrush}"
                                    DocumentPaneControlStyle="{StaticResource LayoutDocumentPaneControlStyle}">
             <avalonDock:DockingManager.Theme>
-                <avalonDock:ExpressionDarkTheme />
+                <avalonDock:ExpressionLightTheme />
             </avalonDock:DockingManager.Theme>
             <avalonDock:LayoutRoot>
                 <avalonDock:LayoutPanel>

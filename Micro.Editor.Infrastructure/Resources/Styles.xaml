@@ -8,11 +8,9 @@
 	mc:Ignorable="d">
 
     <avalonDockConverters:ActivateCommandLayoutItemFromLayoutModelConverter x:Key="ActivateCommandLayoutItemFromLayoutModelConverter"/>
-    
+
     <!-- Brushes -->
-    <SolidColorBrush x:Key="PlainTextForeground" Color="#FFF1F1F1" />
-    <SolidColorBrush x:Key="DefaultBackground" Color="#FF252526" />
-    <SolidColorBrush x:Key="DefaultBorderBrush" Color="#FF252526" />
+    <SolidColorBrush x:Key="BorderBrush" Color="#FFF1F1F1" />
     
     <!-- Image -->
     <Style x:Key="SmallIconStyle" TargetType="{x:Type Image}">
@@ -28,27 +26,17 @@
     
     <!-- TreeView -->
     <Style TargetType="{x:Type TreeView}">
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource PlainTextForeground}" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
 
-    <!-- TreeViewItem -->
-    <Style TargetType="{x:Type TreeViewItem}">
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource PlainTextForeground}" />
-    </Style>
-    
     <!-- ListView -->
     <Style TargetType="{x:Type ListView}">
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource PlainTextForeground}" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
 
     <!-- GridSplitter -->
     <Style TargetType="{x:Type GridSplitter}">
-        <Setter Property="Background" Value="{DynamicResource DefaultBackground}" />
+        <Setter Property="Background" Value="{DynamicResource BorderBrush}" />
     </Style>
     
     <Style x:Key="HorzGridSplitter"
@@ -190,13 +178,9 @@
                                     </Border>
                                 </Grid>
                                 <ControlTemplate.Triggers>
-                                    <Trigger Property="Selector.IsSelected" Value="true">
+                                    <Trigger Property="Selector.IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}" />
                                         <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
-                                    </Trigger>
-                                    <Trigger Property="IsEnabled" Value="false">
-                                        <Setter Property="BorderBrush" Value="Transparent"/>
-                                        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-                                        <Setter Property="Foreground" Value="{DynamicResource PlainTextForeground}"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>

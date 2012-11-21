@@ -38,6 +38,9 @@
     <Reference Include="AvalonDock">
       <HintPath>..\Externals\AvalonDock\AvalonDock.dll</HintPath>
     </Reference>
+    <Reference Include="AvalonDock.Themes.Aero">
+      <HintPath>..\Externals\AvalonDock\AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
     <Reference Include="AvalonDock.Themes.Expression">
       <HintPath>..\Externals\AvalonDock\AvalonDock.Themes.Expression.dll</HintPath>
     </Reference>

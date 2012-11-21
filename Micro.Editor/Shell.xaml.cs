@@ -15,8 +15,7 @@ namespace Micro.Editor
         public Shell()
         {
             InitializeComponent();
-            Application.Current.Apply(Theme.Dark, AccentBrushes.Blue, Brushes.White);
-            //Application.Current.Apply(Theme.Dark, GetRandomAccentBrush(), Brushes.White);
+            Application.Current.Apply(Theme.Light, AccentBrushes.Green, Brushes.White);
         }
 
         [Import]
